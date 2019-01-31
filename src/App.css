@@ -15,9 +15,11 @@
 }
 
 #the-snap{
-  position: absolute;
+
+  align-items: center;
   top: 200px;
-  left: 100px
+  width: 500px
+
 }
 
 .App-logo {

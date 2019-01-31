@@ -28,7 +28,7 @@ class FriendRequest extends Component {
       removedAccepted: removedAccepted,
       addAccepted: addAccepted
     })
-
+    alert(`You are now friends with ${this.handleFindSenderReq()}!`)
   }
 
   handleFindSenderReq =()=>{

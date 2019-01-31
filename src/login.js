@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
+import './App.css';
+
 
 class Login extends Component {
 
@@ -18,7 +20,7 @@ class Login extends Component {
       setTimeout(()=>this.props.history.push('/main'), 500)
 
       let friendRequestsAr = foundUser.friendeed_relationships.filter(rel => rel.accepted === false)
-      // console.log('FR REQ',friendRequestsAr);
+
       //
       // let friendAr = foundUser.friendeed_relationships.filter(rel=> rel.accepted === true)
       // let friendArDos = foundUser.friendered_relationships.filter(rel=> rel.accepted === true)
@@ -30,6 +32,8 @@ class Login extends Component {
     }
   }
 
+  
+
   handleChange=(event)=>{
     this.props.changeLoginInput(event.target.value)
   }
@@ -39,12 +43,12 @@ class Login extends Component {
       return (
         <div>
         <h1>Welcome</h1>
-        <img id="the-snap" src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c536.png"/>
         <h3>Please enter username</h3>
         <input onChange={this.handleChange} type="text" placeholder="sup"></input>
         <button onClick={this.handleClick} >Submit</button>
         <br></br>
         {this.props.currentUser ? <h2>Welcome Back!!</h2> :null}
+        {!this.props.currentUser ? <img id="the-snap" src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c536.png"/> :<img id="the-snap" src="https://cdn2.downdetector.com/static/uploads/logo/snapchat-logo.png"/>}
 
         </div>
       );

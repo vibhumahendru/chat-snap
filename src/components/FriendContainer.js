@@ -31,7 +31,7 @@ class FriendContainer extends Component {
         {this.props.currentUser ?
           this.props.friendRequests.map(request=> <FriendRequest request={request}/>) :null
         }
-        <button onClick={()=> this.notAcceptedRequests()} ></button>
+        
       </div>
     );
   }

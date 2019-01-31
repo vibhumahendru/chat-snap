@@ -6,7 +6,10 @@ let initialState = {
   addFriendInput: null,
   setTimer:1,
   friends:[],
-  friendRequests:[]
+  friendRequests:[],
+  currentPhoto:null,
+  friendObjAr: [],
+  recipientOfSnap: null
 }
 
 function reducer(state=initialState, action) {
@@ -21,6 +24,7 @@ function reducer(state=initialState, action) {
     let friendArDos = action.payload.friendered_relationships.filter(rel=> rel.accepted === true)
     let friends = friendAr.concat(friendArDos)
 
+
       return {...state, currentUser: action.payload, friends: friends, friendRequests:friendRequestsAr}
     case 'SELECT_SNAP':
     return {...state, selectedSnap: action.payload}
@@ -30,6 +34,12 @@ function reducer(state=initialState, action) {
     return {...state, setTimer: action.payload}
     case 'UPDATE_FRIENDS':
     return{...state, friends: action.payload.addAccepted, friendRequests: action.payload.removedAccepted}
+    case 'SET_CURRENT_PHOTO':
+    return {...state, currentPhoto: action.payload}
+    case 'SET_FRIEND_OBJ_AR':
+    return {...state, friendObjAr: action.payload}
+    case 'SET_RECIPIENT':
+    return {...state, recipientOfSnap: action.payload}
 
     default: return state
 

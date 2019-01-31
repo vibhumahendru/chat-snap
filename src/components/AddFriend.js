@@ -13,6 +13,21 @@ class AddFriend extends Component {
     let foundUser= this.props.usersAr.find(user=> user.name === this.props.addFriendInput)
       if (foundUser) {
         console.log(foundUser.name, foundUser.id)
+        fetch('http://localhost:3000/relationships', {
+          method:'POST',
+          headers:{
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+
+              friender_id: this.props.currentUser.id,
+              friendee_id: foundUser.id
+
+            })
+        })
+
+        alert(`You sent a friend request to ${foundUser.name}` )
 
       }else{
         console.log("No Such User");
