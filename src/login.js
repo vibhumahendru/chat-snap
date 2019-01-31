@@ -17,6 +17,14 @@ class Login extends Component {
       this.props.setCurrentUser(foundUser)
       setTimeout(()=>this.props.history.push('/main'), 500)
 
+      let friendRequestsAr = foundUser.friendeed_relationships.filter(rel => rel.accepted === false)
+      // console.log('FR REQ',friendRequestsAr);
+      //
+      // let friendAr = foundUser.friendeed_relationships.filter(rel=> rel.accepted === true)
+      // let friendArDos = foundUser.friendered_relationships.filter(rel=> rel.accepted === true)
+      // let friends = friendAr.concat(friendArDos)
+      //
+      // console.log('friends', friends);
     }else{
       console.log("not found");
     }
@@ -27,6 +35,7 @@ class Login extends Component {
   }
 
     render() {
+
       return (
         <div>
         <h1>Welcome</h1>
@@ -47,7 +56,9 @@ class Login extends Component {
     return {
       loginInput: state.loginInput,
       usersAr: state.usersAr,
-      currentUser: state.currentUser
+      currentUser: state.currentUser,
+      friends: state.friends,
+      friendRequests: state.friendRequests
     }
   }
   function mapDispatchToProps(dispatch) {

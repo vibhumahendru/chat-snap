@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
 
 class FriendRequest extends Component {
 
-  handleSendFR=()=>{
-    console.log(this.props.request.id);
+  handleAcceptFR=()=>{
+    // console.log('inside accpet',this.props.request);
     fetch(`http://localhost:3000/relationships/${this.props.request.id}`, {
       method:'PATCH',
       headers:{
@@ -15,16 +16,50 @@ class FriendRequest extends Component {
 
         })
     })
+
+
+    let copyFriendRequests = [...this.props.friendRequests]
+    let removedAccepted = copyFriendRequests.filter(req=> req.id !== this.props.request.id)
+
+    let copyFriends = [...this.props.friends]
+    let addAccepted = [...copyFriends, this.props.request]
+
+    this.props.updateFriends({
+      removedAccepted: removedAccepted,
+      addAccepted: addAccepted
+    })
+
+  }
+
+  handleFindSenderReq =()=>{
+    let foundSender = this.props.usersAr.find(user=> user.id === this.props.request.friender_id)
+    return foundSender.name
   }
 
   render() {
+
     return (
-      <div>Your Friend!!{this.props.request.id}
-        <button onClick={this.handleSendFR}>Accept</button>
+      <div>New Friend request from {this.handleFindSenderReq()}
+        <button onClick={this.handleAcceptFR}>Accept</button>
       </div>
     );
   }
 
 }
 
-export default FriendRequest;
+function mapStateToProps(state){
+  return {
+    currentUser: state.currentUser,
+    friends: state.friends,
+    friendRequests: state.friendRequests,
+    usersAr: state.usersAr
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    updateFriends: (rel)=> dispatch({type: 'UPDATE_FRIENDS', payload: rel})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FriendRequest);

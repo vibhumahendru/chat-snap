@@ -39,12 +39,12 @@ class Snapchat extends Component {
 
 
   render() {
-    console.log(this.props);
+    
     return (
       <div >
 
       {this.props.currentUser ? <h1>HII {this.props.currentUser.name}</h1> :null}
-      
+
         <AddFriend/>
         <FriendContainer/>
         <br></br>
