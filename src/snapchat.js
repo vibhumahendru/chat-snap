@@ -38,6 +38,11 @@ class Snapchat extends Component {
     this.props.changeSetTimer(event.target.value)
   }
 
+  handleLogout=()=> {
+    this.props.logout()
+    this.props.history.push('/login')
+  }
+
   componentDidMount(){
     // console.log('initial friends in sp', this.props.friends, 'USER IS', this.props.currentUser);
     // console.log("all users", this.props.usersAr);
@@ -62,7 +67,7 @@ class Snapchat extends Component {
       <div >
 
       {this.props.currentUser ? <h1>HII {this.props.currentUser.name}</h1> :null}
-
+        <button onClick={this.handleLogout} >Logout</button>
         <AddFriend/>
         <FriendContainer/>
         <br></br>
@@ -105,7 +110,8 @@ function mapDispatchToProps(dispatch) {
   return {
     changeSetTimer: (time)=> dispatch({type:'CHANGE_TIMER', payload: time}),
     setCurrentPhoto: (image)=> dispatch({type: 'SET_CURRENT_PHOTO', payload: image}),
-    setFriendObjAr: (friendAr)=> dispatch({type: 'SET_FRIEND_OBJ_AR', payload: friendAr})
+    setFriendObjAr: (friendAr)=> dispatch({type: 'SET_FRIEND_OBJ_AR', payload: friendAr}),
+    logout: ()=> dispatch({type: 'LOGOUT'})
   }
 }
 

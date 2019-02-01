@@ -40,6 +40,12 @@ function reducer(state=initialState, action) {
     return {...state, friendObjAr: action.payload}
     case 'SET_RECIPIENT':
     return {...state, recipientOfSnap: action.payload}
+    case 'ADD_FRIEND_TO_FRIEND_OBJ_AR':
+      let copyFriendObjAr = [...state.friendObjAr]
+      let updatedFriendObjAr = [...copyFriendObjAr, action.payload]
+    return {...state, friendObjAr: updatedFriendObjAr}
+    case 'LOGOUT':
+    return {...initialState}
 
     default: return state
 

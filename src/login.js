@@ -29,17 +29,18 @@ class Login extends Component {
       // console.log('friends', friends);
     }else{
       console.log("not found");
+      alert("Username Not Found :(")
     }
   }
 
-  
+
 
   handleChange=(event)=>{
     this.props.changeLoginInput(event.target.value)
   }
 
     render() {
-
+      console.log('in login', this.props);
       return (
         <div>
         <h1>Welcome</h1>

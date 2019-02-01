@@ -17,6 +17,14 @@ class FriendRequest extends Component {
         })
     })
 
+    console.log('inside accept req', this.props.request.friender_id);
+
+    let foundSenderOfReq = this.props.usersAr.find(user=> user.id === this.props.request.friender_id)
+
+    console.log(foundSenderOfReq);
+
+    this.props.addFriendToFriendObjAr(foundSenderOfReq)
+
 
     let copyFriendRequests = [...this.props.friendRequests]
     let removedAccepted = copyFriendRequests.filter(req=> req.id !== this.props.request.id)
@@ -37,7 +45,7 @@ class FriendRequest extends Component {
   }
 
   render() {
-
+    console.log('inside FR !!', this.props);
     return (
       <div>New Friend request from {this.handleFindSenderReq()}
         <button onClick={this.handleAcceptFR}>Accept</button>
@@ -52,13 +60,15 @@ function mapStateToProps(state){
     currentUser: state.currentUser,
     friends: state.friends,
     friendRequests: state.friendRequests,
-    usersAr: state.usersAr
+    usersAr: state.usersAr,
+    friendObjAr: state.friendObjAr
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    updateFriends: (rel)=> dispatch({type: 'UPDATE_FRIENDS', payload: rel})
+    updateFriends: (rel)=> dispatch({type: 'UPDATE_FRIENDS', payload: rel}),
+    addFriendToFriendObjAr:(user)=> dispatch({type: 'ADD_FRIEND_TO_FRIEND_OBJ_AR', payload:user})
   }
 }
 
