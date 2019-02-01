@@ -18,8 +18,44 @@
 
   align-items: center;
   top: 200px;
-  width: 500px
+  width: 500px;
 
+
+}
+
+.Row{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 10px;
+}
+.column{
+  display: table-cell;
+  border-style: solid;
+  
+}
+
+.friend-stuff{
+  border-style: solid;
+  display: inline-block;
+  margin: 50px;
+  padding: 20px;
+  float: left;
+}
+
+.snap-container{
+    border-style: solid;
+    display: inline-block;
+    margin: 50px;
+    padding: 20px;
+    float: right;
+}
+
+.camera-container{
+  border-style: solid;
+  display: inline-block;
+  margin: 50px;
+  padding: 20px;
 }
 
 .App-logo {

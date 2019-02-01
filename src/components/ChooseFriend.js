@@ -41,6 +41,7 @@ class ChooseFreind extends Component {
         {this.props.friendObjAr.map(friend=> <option value={JSON.stringify(friend)} >{friend.name}</option>)}
       </select>
       <br></br>
+      <br></br>
       {this.props.recipientOfSnap ? <button onClick={this.sendSnap} >SEND SNAP!!</button> :null}
       </div>
     );
