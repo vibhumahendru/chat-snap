@@ -9,7 +9,8 @@ let initialState = {
   friendRequests:[],
   currentPhoto:null,
   friendObjAr: [],
-  recipientOfSnap: null
+  recipientOfSnap: null,
+  recievedSnaps:[]
 }
 
 function reducer(state=initialState, action) {
@@ -25,7 +26,7 @@ function reducer(state=initialState, action) {
     let friends = friendAr.concat(friendArDos)
 
 
-      return {...state, currentUser: action.payload, friends: friends, friendRequests:friendRequestsAr}
+      return {...state, currentUser: action.payload, friends: friends, friendRequests:friendRequestsAr, recievedSnaps: action.payload.recieved_snaps}
     case 'SELECT_SNAP':
     return {...state, selectedSnap: action.payload}
     case 'CHANGE_FRIEND_INPUT':
@@ -46,6 +47,11 @@ function reducer(state=initialState, action) {
     return {...state, friendObjAr: updatedFriendObjAr}
     case 'LOGOUT':
     return {...initialState}
+    case 'REMOVE_VIEWED_SNAP':
+    let copyRecievedSnaps = [...state.recievedSnaps]
+    let foundSnap = copyRecievedSnaps.find(snap=> snap.id === action.payload.id)
+    let filteredRecievedSnaps = state.recievedSnaps.filter(snap=> snap.id !==action.payload.id)
+    return {...state, recievedSnaps: filteredRecievedSnaps}
 
     default: return state
 

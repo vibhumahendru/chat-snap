@@ -102,7 +102,8 @@ function mapStateToProps(state){
     currentPhoto: state.currentPhoto,
     friends: state.friends,
     usersAr: state.usersAr,
-    friendObjAr: state.friendObjAr
+    friendObjAr: state.friendObjAr,
+    recievedSnaps: state.recievedSnaps
   }
 }
 

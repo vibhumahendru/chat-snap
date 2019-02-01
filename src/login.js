@@ -28,7 +28,7 @@ class Login extends Component {
       //
       // console.log('friends', friends);
     }else{
-      console.log("not found");
+      // console.log("not found");
       alert("Username Not Found :(")
     }
   }
@@ -40,7 +40,6 @@ class Login extends Component {
   }
 
     render() {
-      console.log('in login', this.props);
       return (
         <div>
         <h1>Welcome</h1>
@@ -49,7 +48,7 @@ class Login extends Component {
         <button onClick={this.handleClick} >Submit</button>
         <br></br>
         {this.props.currentUser ? <h2>Welcome Back!!</h2> :null}
-        {!this.props.currentUser ? <img id="the-snap" src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c536.png"/> :<img id="the-snap" src="https://cdn2.downdetector.com/static/uploads/logo/snapchat-logo.png"/>}
+        {!this.props.currentUser ? <img id="the-snap" src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c536.png"/> :<img id="the-snap" src={require(`./smiley.png`)}/>}
 
         </div>
       );
