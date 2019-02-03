@@ -1,42 +1,49 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import '../App.css';
+import RecievedSnap from './RecievedSnap.js'
 
 class RecievedSnapContainer extends Component {
 
 
-  handleViewSnap=(snap)=>{
-    console.log(snap);
-    this.props.changeSelectedSnap(snap)
-    setTimeout(()=> this.props.changeSelectedSnap(null), snap.timer*1000 )
+  // handleViewSnap=(snap)=>{
+  //   console.log(snap);
+  //   this.props.changeSelectedSnap(snap)
+  //   setTimeout(()=> this.props.changeSelectedSnap(null), snap.timer*1000 )
+  //
+  //   fetch(`http://localhost:3000/snaps/${snap.id}`, {
+  //     method:'PATCH',
+  //     headers:{
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({
+  //         viewed: true
+  //
+  //       })
+  //   }).then(console.log('view worked'))
+  //
+  //   this.props.removeViewedSnap(snap)
+  //
+  // }
 
-    fetch(`http://localhost:3000/snaps/${snap.id}`, {
-      method:'PATCH',
-      headers:{
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          viewed: true
+  // {this.props.currentUser ?
+  //   <h1>New Snaps {this.props.recievedSnaps.filter(snap=> snap.viewed === false).map(snap=> <li onClick={()=>this.handleViewSnap(snap)} >View snap from {this.getSenderName(snap)}</li>)}</h1> :null
+  // }
 
-        })
-    }).then(console.log('view worked'))
-
-    this.props.removeViewedSnap(snap)
-
-  }
-
-  getSenderName=(snap)=>{
-    let foundSender = this.props.usersAr.find(user=> user.id === snap.sender_id)
-    return foundSender.name
-  }
+  // getSenderName=(snap)=>{
+  //   let foundSender = this.props.usersAr.find(user=> user.id === snap.sender_id)
+  //   return foundSender.name
+  // }
 
 
   render() {
     return (
       <div>
-      {this.props.currentUser ?
-        <h1>{this.props.currentUser.name}'s New Snap Container {this.props.recievedSnaps.filter(snap=> snap.viewed === false).map(snap=> <li onClick={()=>this.handleViewSnap(snap)} >View snap from {this.getSenderName(snap)}</li>)}</h1> :null
+      <h1>New Snaps</h1>
+
+      {
+        this.props.recievedSnaps.filter(snap=> snap.viewed === false).map(snap=> <RecievedSnap snap={snap}/>)
       }
       {
         this.props.selectedSnap ? <div id="snap-back"><img id="the-snap" src={this.props.selectedSnap.dataUri}/></div> :null

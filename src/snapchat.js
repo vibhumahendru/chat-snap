@@ -67,19 +67,21 @@ class Snapchat extends Component {
       <div >
 
       {this.props.currentUser ? <h1>HII {this.props.currentUser.name}</h1> :null}
-        <button onClick={this.handleLogout} >Logout</button>
-          <div className="friend-stuff" >
+        <button className="btn btn-outline-danger btn-sm" onClick={this.handleLogout} >Logout</button>
+        <div className="grid-container">
+          <div className="grid-item" >
             <FriendContainer/>
             <AddFriend/>
           </div>
 
-        <br></br>
-          <div className="camera-container" >
+
+          <div className="snap-container" >
             {this.props.currentPhoto ? <img id="the-snap" src={this.props.currentPhoto}/> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
             <br></br>
             <br></br>
-            {this.props.currentPhoto ? <button onClick={()=> this.props.setCurrentPhoto(null)}>Take Another Pic</button>: <button onClick={this.capture}>TAKE PIC</button>}
-          Timer  <select onChange={(event)=> this.setTimer(event)}>
+            {this.props.currentPhoto ? <button className="btn btn-primary btn-sm" onClick={()=> this.props.setCurrentPhoto(null)}>Take Another Pic</button>: <button className="btn btn-primary btn-sm" onClick={this.capture}>TAKE PIC</button>}
+            <br></br>
+          {this.props.currentPhoto ? <><>Timer</><select onChange={(event)=> this.setTimer(event)}>
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -89,13 +91,13 @@ class Snapchat extends Component {
             <option>7</option>
             <option>8</option>
             <option>9</option>
-            <option>10</option>
-            </select>
-            {this.props.currentPhoto ? <><h2>Who do you want to send this to?</h2><ChooseFriend friendObjAr={this.props.friendObjAr}/></> :null}
+            <option>10</option></select></> :null}
+            {this.props.currentPhoto ? <ChooseFriend friendObjAr={this.props.friendObjAr}/> :null}
           </div>
         {this.props.currentUser ?
-          <div className="snap-container" ><RecievedSnapContainer/></div> :null
+          <div className="grid-item" ><RecievedSnapContainer/></div> :null
         }
+        </div>
       </div>
     );
   }

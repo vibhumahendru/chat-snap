@@ -44,11 +44,11 @@ class Login extends Component {
     render() {
       return (
         <div>
-        
+
         <h1>Welcome</h1>
         <h3>Please enter username</h3>
         <input onChange={this.handleChange} type="text" placeholder="sup"></input>
-        <button onClick={this.handleClick} >Submit</button>
+        <button className="btn btn-outline-primary btn-sm" onClick={this.handleClick} >Submit</button>
         <br></br>
         {this.props.currentUser ? <h2>Welcome Back!!</h2> :null}
         {!this.props.currentUser ? <img id="the-snap" src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c536.png"/> :<img id="the-snap" src={require(`./smiley.png`)}/>}

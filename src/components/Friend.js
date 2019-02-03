@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
+import '../App.css';
+
 
 class Friend extends Component {
 
@@ -18,8 +20,9 @@ class Friend extends Component {
   render() {
 
     return (
-      <div>
-        You are friends with {this.handleFindFriendName()}
+      <div className="alert alert-success">
+      <img className="friend-bitmoji" src="http://christinagriffis.com/wp-content/uploads/2018/02/Christina-Bitmoji-Circle-01.png"/>
+        <h4>{this.handleFindFriendName()}</h4>
       </div>
     );
   }

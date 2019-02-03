@@ -35,19 +35,20 @@ class ChooseFreind extends Component {
     console.log('in choose friends', this.props);
     return (
       <div>
-      Make a selection:
-      <select onChange={(event)=>this.handleSelectSender(event)}>
+      Send to...
+      <select className="btn btn-info dropdown-toggle" onChange={(event)=>this.handleSelectSender(event)}>
       <option>Select one:</option>
         {this.props.friendObjAr.map(friend=> <option value={JSON.stringify(friend)} >{friend.name}</option>)}
       </select>
       <br></br>
       <br></br>
-      {this.props.recipientOfSnap ? <button onClick={this.sendSnap} >SEND SNAP!!</button> :null}
+      {this.props.recipientOfSnap ? <button className="btn btn-success" onClick={this.sendSnap} >SEND SNAP!!</button> :null}
       </div>
     );
   }
 
 }
+
 
 function mapStateToProps(state){
   return {
