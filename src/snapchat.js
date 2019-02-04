@@ -7,6 +7,7 @@ import AddFriend from './components/AddFriend.js'
 import FriendContainer from './components/FriendContainer.js'
 import ChooseFriend from './components/ChooseFriend.js'
 import Sticker from './components/Sticker.js'
+import Nav from './components/Nav.js'
 
 
 
@@ -71,9 +72,11 @@ class Snapchat extends Component {
 
     return (
       <div >
+          <div className="nav">
+              {this.props.currentUser ? <Nav/> :null}
+              <button className="btn btn-outline-danger btn-sm" onClick={this.handleLogout} >Logout</button>
 
-      {this.props.currentUser ? <h1>HII {this.props.currentUser.name}</h1> :null}
-        <button className="btn btn-outline-danger btn-sm" onClick={this.handleLogout} >Logout</button>
+          </div>
         <div className="grid-container">
           <div className="grid-item" >
             <FriendContainer/>

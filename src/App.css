@@ -9,7 +9,7 @@
 #the-sticker-viewing{
   position: absolute;
   top: 30px;
-  left: 430px;
+  left: 35%;
   width: 10%
 }
 
@@ -22,10 +22,36 @@
     min-height: 100vh;
 }
 
+.rec-snap-container{
+  overflow-y: scroll;
+  height: 400px;
+}
+
+.seen-snaps{
+  overflow-y: scroll;
+  height: 300px;
+  background-color: white;
+  border: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: purple;
+
+}
+
 #the-snap{
  margin-top: 10px;
   width: 600px;
 
+}
+
+.nav{
+  padding-left: 10px;
+
+}
+
+#logout{
+
+  float: left;
 }
 
 
@@ -46,6 +72,10 @@ float: left;
 
 }
 
+/* #opened{
+  position: fixed
+} */
+
 .recieved-snap{
   background-color:  #ffe6f0;
 border-style: solid;
@@ -55,6 +85,20 @@ margin: 4px;
 display: inline-block;
 width: 90%;
 padding: 10px;
+border-radius: 10px;
+
+}
+
+.recieved-seen-snap{
+  background-color: white;
+border-style: solid;
+border-width: 1px;
+border-color: purple;
+margin: 4px;
+display: inline-block;
+width: 90%;
+padding: 10px;
+border-radius: 10px;
 
 }
 
@@ -101,7 +145,7 @@ padding: 10px;
 #the-sticker{
   position: absolute;
   top: 15px;
-  left: 45px;
+  left: 180px;
   width: 20%
 }
 

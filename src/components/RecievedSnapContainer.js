@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import '../App.css';
 import RecievedSnap from './RecievedSnap.js'
+import SeenSnap from './SeenSnap.js'
 
 class RecievedSnapContainer extends Component {
 
@@ -40,15 +41,20 @@ class RecievedSnapContainer extends Component {
   render() {
     return (
       <div>
-      <h1>New Snaps</h1>
+          <h1>New Snaps</h1>
+            <div className="rec-snap-container">
+          {
+            this.props.recievedSnaps.filter(snap=> snap.viewed === false).map(snap=> <RecievedSnap snap={snap}/>)
+          }
+          </div>
+          {
+            this.props.selectedSnap ? <div id="snap-back"><img id="the-snap" src={this.props.selectedSnap.dataUri}/><img id="the-sticker-viewing" src={this.props.selectedSnap.stickerUrl}/></div> :null
+          }
 
-      {
-        this.props.recievedSnaps.filter(snap=> snap.viewed === false).map(snap=> <RecievedSnap snap={snap}/>)
-      }
-      {
-        this.props.selectedSnap ? <div id="snap-back"><img id="the-snap" src={this.props.selectedSnap.dataUri}/><img id="the-sticker-viewing" src={this.props.selectedSnap.stickerUrl}/></div> :null
-      }
-
+          <div className="seen-snaps" >
+            <h3 id="opened">Opened</h3>
+            {this.props.recievedSnaps.filter(snap=> snap.viewed === true).map(snap=> <SeenSnap snap={snap}/>)}
+          </div>
       </div>
     );
   }
