@@ -27,11 +27,11 @@ class FriendContainer extends Component {
         this.props.friends.map(request=> <Friend request={request}/>) :null
       }
       <br></br>
-      <h1>New Requests</h1>
+      {this.props.friendRequests.length>0 ? <h1>New Requests</h1> :null}
         {this.props.currentUser ?
           this.props.friendRequests.map(request=> <FriendRequest request={request}/>) :null
         }
-        
+
       </div>
     );
   }

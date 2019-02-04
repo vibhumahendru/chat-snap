@@ -10,7 +10,9 @@ let initialState = {
   currentPhoto:null,
   friendObjAr: [],
   recipientOfSnap: null,
-  recievedSnaps:[]
+  recievedSnaps:[],
+  newUsernameInput:null,
+  sticker:null
 }
 
 function reducer(state=initialState, action) {
@@ -52,7 +54,10 @@ function reducer(state=initialState, action) {
     let foundSnap = copyRecievedSnaps.find(snap=> snap.id === action.payload.id)
     let filteredRecievedSnaps = state.recievedSnaps.filter(snap=> snap.id !==action.payload.id)
     return {...state, recievedSnaps: filteredRecievedSnaps}
-
+    case 'CHANGE_NEW_USERNAME':
+        return {...state, newUsernameInput: action.payload}
+    case 'UPDATE_STICKER':
+    return {...state, sticker:action.payload}    
     default: return state
 
   }

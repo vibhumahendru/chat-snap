@@ -3,6 +3,14 @@
 }
 
 .cam{
+  width: 600px
+}
+
+#the-sticker-viewing{
+  position: absolute;
+  top: 30px;
+  left: 400px;
+  width: 10%
 }
 
 #snap-back{
@@ -15,11 +23,102 @@
 }
 
 #the-snap{
+ margin-top: 10px;
+  width: 600px;
 
-  align-items: center;
-  top: 200px;
-  width: 500px
+}
 
+
+
+.friend-bitmoji{
+  height: 40px;
+float: left;
+}
+.each-friend{
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  margin: 4px;
+  background-color:  #d0d0e1;
+  display: inline-block;
+  width: 90%;
+  padding: 5px;
+
+}
+
+.recieved-snap{
+  background-color:  #ffe6f0;
+border-style: solid;
+border-width: 1px;
+border-color: red;
+margin: 4px;
+display: inline-block;
+width: 90%;
+padding: 10px;
+
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  border-style: solid;
+
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+.grid-container{
+  display: grid;
+  /* grid-column-gap: 20px; */
+  grid-template-columns: 25vw 50vw 25vw;
+  margin-top: 10px;
+}
+
+.grid-item {
+
+  border-style: solid;
+  padding: 20px;
+  text-align: center;
+  background-color: yellow;
+  height: 100vh;
+}
+
+.friend-stuff{
+  border-style: solid;
+  display: inline-block;
+  /* margin: 50px; */
+  padding: 20px;
+  float: left;
+  width: 300px;
+}
+
+#the-sticker{
+  position: absolute;
+  top: 15px;
+  left: 45px;
+  width: 20%
+}
+
+.snap-container{
+    border-style: solid;
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.camera-container{
+  border-style: solid;
+  display: inline-block;
+  /* margin: 50px; */
+  padding: 20px;
+  float: left;
+  width: 500px;
 }
 
 .App-logo {
