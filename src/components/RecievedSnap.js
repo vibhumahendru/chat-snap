@@ -10,7 +10,7 @@ class RecievedSnap extends Component {
   }
 
   handleViewSnap=(snap)=>{
-    
+
     this.props.changeSelectedSnap(snap)
     setTimeout(()=> this.props.changeSelectedSnap(null), snap.timer*1000 )
 
