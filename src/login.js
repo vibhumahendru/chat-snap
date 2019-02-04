@@ -52,7 +52,8 @@ class Login extends Component {
         <br></br>
         {this.props.currentUser ? <h2>Welcome Back!!</h2> :null}
         {!this.props.currentUser ? <img id="the-snap" src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c536.png"/> :<img id="the-snap" src={require(`./smiley.png`)}/>}
-
+        <br></br>
+        <button onClick={()=> this.props.history.push('/sign-up')}className="btn btn-info btn-sm" >Sign Up</button>
         </div>
       );
     }

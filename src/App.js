@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 
 import Login from './login.js'
 import Snapchat from './snapchat.js'
+import SignUp from './components/SignUp.js'
 
 class App extends Component {
 
@@ -26,7 +27,7 @@ class App extends Component {
       <div className="App">
         <Route path='/login' exact component={Login} />
         <Route path='/main' exact component={Snapchat} />
-
+        <Route path='/sign-up' exact component={SignUp} />
       </div>
       </>
       </Router>

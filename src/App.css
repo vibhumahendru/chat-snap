@@ -6,6 +6,13 @@
   width: 600px
 }
 
+#the-sticker-viewing{
+  position: absolute;
+  top: 30px;
+  left: 400px;
+  width: 10%
+}
+
 #snap-back{
   background-color: rgba(0,0,0,0.9);
     position: absolute;
@@ -17,9 +24,11 @@
 
 #the-snap{
  margin-top: 10px;
-  width: 600px
+  width: 600px;
 
 }
+
+
 
 .friend-bitmoji{
   height: 40px;
@@ -89,8 +98,16 @@ padding: 10px;
   width: 300px;
 }
 
+#the-sticker{
+  position: absolute;
+  top: 15px;
+  left: 45px;
+  width: 20%
+}
+
 .snap-container{
     border-style: solid;
+    position: relative;
     margin-left: 10px;
     margin-right: 10px;
 }

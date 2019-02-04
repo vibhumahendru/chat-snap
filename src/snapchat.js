@@ -6,6 +6,7 @@ import RecievedSnapContainer from './components/RecievedSnapContainer.js'
 import AddFriend from './components/AddFriend.js'
 import FriendContainer from './components/FriendContainer.js'
 import ChooseFriend from './components/ChooseFriend.js'
+import Sticker from './components/Sticker.js'
 
 
 
@@ -61,8 +62,13 @@ class Snapchat extends Component {
     this.props.setFriendObjAr(testAr)
   }
 
+  handleReset=()=>{
+    this.props.setCurrentPhoto(null)
+    this.props.updateSticker(null)
+  }
+
   render() {
-    console.log('in snapchat', this.props);
+
     return (
       <div >
 
@@ -77,9 +83,10 @@ class Snapchat extends Component {
 
           <div className="snap-container" >
             {this.props.currentPhoto ? <img id="the-snap" src={this.props.currentPhoto}/> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
+            {this.props.sticker ? <img id="the-sticker" src={this.props.sticker}/> :null}
             <br></br>
             <br></br>
-            {this.props.currentPhoto ? <button className="btn btn-primary btn-sm" onClick={()=> this.props.setCurrentPhoto(null)}>Take Another Pic</button>: <button className="btn btn-primary btn-sm" onClick={this.capture}>TAKE PIC</button>}
+            {this.props.currentPhoto ? <button className="btn btn-primary btn-sm" onClick={this.handleReset}>Take Another Pic</button>: <button className="btn btn-primary btn-sm" onClick={this.capture}>TAKE PIC</button>}
             <br></br>
           {this.props.currentPhoto ? <><>Timer</><select onChange={(event)=> this.setTimer(event)}>
             <option>1</option>
@@ -92,7 +99,9 @@ class Snapchat extends Component {
             <option>8</option>
             <option>9</option>
             <option>10</option></select></> :null}
+            {this.props.currentPhoto ? <Sticker/> :null}
             {this.props.currentPhoto ? <ChooseFriend friendObjAr={this.props.friendObjAr}/> :null}
+
           </div>
         {this.props.currentUser ?
           <div className="grid-item" ><RecievedSnapContainer/></div> :null
@@ -112,7 +121,8 @@ function mapStateToProps(state){
     friends: state.friends,
     usersAr: state.usersAr,
     friendObjAr: state.friendObjAr,
-    recievedSnaps: state.recievedSnaps
+    recievedSnaps: state.recievedSnaps,
+    sticker:state.sticker
   }
 }
 
@@ -121,7 +131,9 @@ function mapDispatchToProps(dispatch) {
     changeSetTimer: (time)=> dispatch({type:'CHANGE_TIMER', payload: time}),
     setCurrentPhoto: (image)=> dispatch({type: 'SET_CURRENT_PHOTO', payload: image}),
     setFriendObjAr: (friendAr)=> dispatch({type: 'SET_FRIEND_OBJ_AR', payload: friendAr}),
-    logout: ()=> dispatch({type: 'LOGOUT'})
+    logout: ()=> dispatch({type: 'LOGOUT'}),
+    updateSticker: (stickerUrl)=> dispatch({type: 'UPDATE_STICKER', payload: stickerUrl})
+
   }
 }
 

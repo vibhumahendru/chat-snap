@@ -21,7 +21,7 @@ class FriendRequest extends Component {
 
     let foundSenderOfReq = this.props.usersAr.find(user=> user.id === this.props.request.friender_id)
 
-    console.log(foundSenderOfReq);
+    
 
     this.props.addFriendToFriendObjAr(foundSenderOfReq)
 
@@ -45,7 +45,7 @@ class FriendRequest extends Component {
   }
 
   render() {
-    console.log('inside FR !!', this.props);
+
     return (
       <div>New Friend request from {this.handleFindSenderReq()}
         <button onClick={this.handleAcceptFR}>Accept</button>
