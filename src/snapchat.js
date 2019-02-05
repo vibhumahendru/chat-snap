@@ -13,6 +13,8 @@ import Nav from './components/Nav.js'
 
 class Snapchat extends Component {
 
+
+
   capture = () => {
       const imageSrc = this.webcam.getScreenshot();
       this.props.setCurrentPhoto(imageSrc)
@@ -45,10 +47,21 @@ class Snapchat extends Component {
     this.props.history.push('/login')
   }
 
-  componentDidMount(){
-    // console.log('initial friends in sp', this.props.friends, 'USER IS', this.props.currentUser);
-    // console.log("all users", this.props.usersAr);
+  getNewRecSnaps=(userId)=>{
+    fetch(`http://localhost:3000/users/${userId}`)
+    .then(res => res.json())
+    .then(user => {
+      console.log("polling active!!");
+      this.handleFriendObjAr()
+      return this.props.setCurrentUser(user);
+    })
+  }
 
+
+
+  pollRecSnapsInterval =null
+
+  handleFriendObjAr = ()=>{
     let testAr = []
     this.props.friends.forEach((rel)=>{
       if (rel.friender_id === this.props.currentUser.id) {
@@ -61,6 +74,33 @@ class Snapchat extends Component {
     })
     // console.log('friendObjAr', testAr);
     this.props.setFriendObjAr(testAr)
+  }
+
+  componentDidMount(){
+    // console.log('initial friends in sp', this.props.friends, 'USER IS', this.props.currentUser);
+    // console.log("all users", this.props.usersAr);
+
+    this.pollRecSnapsInterval = setInterval(()=> this.getNewRecSnaps(this.props.currentUser.id), 3000)
+    this.handleFriendObjAr()
+    // this.getNewRecSnaps(this.props.currentUser.id)
+
+    // let testAr = []
+    // this.props.friends.forEach((rel)=>{
+    //   if (rel.friender_id === this.props.currentUser.id) {
+    //     let foundFriend = this.props.usersAr.find(user=> user.id === rel.friendee_id)
+    //     testAr = [...testAr, foundFriend]
+    //   }else{
+    //     let foundFriend = this.props.usersAr.find(user=> user.id === rel.friender_id)
+    //     testAr = [...testAr, foundFriend]
+    //   }
+    // })
+    // // console.log('friendObjAr', testAr);
+    // this.props.setFriendObjAr(testAr)
+  }
+
+  componentWillUnmount(){
+    console.log("unmounted");
+    clearInterval(this.pollRecSnapsInterval)
   }
 
   handleReset=()=>{
@@ -135,7 +175,9 @@ function mapDispatchToProps(dispatch) {
     setCurrentPhoto: (image)=> dispatch({type: 'SET_CURRENT_PHOTO', payload: image}),
     setFriendObjAr: (friendAr)=> dispatch({type: 'SET_FRIEND_OBJ_AR', payload: friendAr}),
     logout: ()=> dispatch({type: 'LOGOUT'}),
-    updateSticker: (stickerUrl)=> dispatch({type: 'UPDATE_STICKER', payload: stickerUrl})
+    updateSticker: (stickerUrl)=> dispatch({type: 'UPDATE_STICKER', payload: stickerUrl}),
+    pollingRecSnaps: (user) => dispatch({type: 'POLLING_REC_SNAPS', payload:user}),
+      setCurrentUser: (user)=> dispatch({type: 'SET_CURRENT_USER', payload:user})
 
   }
 }

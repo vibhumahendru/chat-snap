@@ -63,6 +63,10 @@ function reducer(state=initialState, action) {
       let copyRecSnaps = [...state.recievedSnaps]
       let updatedRecSnaps = [...copyRecSnaps, openedSnap]
     return {...state, recievedSnaps: updatedRecSnaps}
+    case 'POLLING_REC_SNAPS':
+      let user = action.payload
+      let pollRecSnaps = user.recieved_snaps
+    return{...state, recievedSnaps: pollRecSnaps}
     default: return state
 
   }

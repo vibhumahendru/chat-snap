@@ -25,9 +25,9 @@ class RecievedSnap extends Component {
 
         })
     }).then(res => res.json())
-    .then(seenSnap=> {
-      return this.props.addSeenToRecSnaps(seenSnap)
-    })
+    // .then(seenSnap=> {
+    //   return this.props.addSeenToRecSnaps(seenSnap)
+    // })
 
     this.props.removeViewedSnap(snap)
 
