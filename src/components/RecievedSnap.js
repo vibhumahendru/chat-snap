@@ -10,7 +10,7 @@ class RecievedSnap extends Component {
   }
 
   handleViewSnap=(snap)=>{
-    
+
     this.props.changeSelectedSnap(snap)
     setTimeout(()=> this.props.changeSelectedSnap(null), snap.timer*1000 )
 
@@ -24,7 +24,10 @@ class RecievedSnap extends Component {
           viewed: true
 
         })
-    }).then(console.log('view worked'))
+    }).then(res => res.json())
+    // .then(seenSnap=> {
+    //   return this.props.addSeenToRecSnaps(seenSnap)
+    // })
 
     this.props.removeViewedSnap(snap)
 
@@ -53,7 +56,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch) {
   return {
     changeSelectedSnap: (snap)=> dispatch({type:'SELECT_SNAP', payload: snap}),
-    removeViewedSnap: (snap) => dispatch({type: 'REMOVE_VIEWED_SNAP', payload: snap})
+    removeViewedSnap: (snap) => dispatch({type: 'REMOVE_VIEWED_SNAP', payload: snap}),
+    addSeenToRecSnaps: (snap)=> dispatch({type:'ADD_SEEN_TO_REC_CON', payload:snap})
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RecievedSnap);

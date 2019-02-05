@@ -7,10 +7,13 @@ import AddFriend from './components/AddFriend.js'
 import FriendContainer from './components/FriendContainer.js'
 import ChooseFriend from './components/ChooseFriend.js'
 import Sticker from './components/Sticker.js'
+import Nav from './components/Nav.js'
 
 
 
 class Snapchat extends Component {
+
+
 
   capture = () => {
       const imageSrc = this.webcam.getScreenshot();
@@ -44,10 +47,21 @@ class Snapchat extends Component {
     this.props.history.push('/login')
   }
 
-  componentDidMount(){
-    // console.log('initial friends in sp', this.props.friends, 'USER IS', this.props.currentUser);
-    // console.log("all users", this.props.usersAr);
+  getNewRecSnaps=(userId)=>{
+    fetch(`http://localhost:3000/users/${userId}`)
+    .then(res => res.json())
+    .then(user => {
+      console.log("polling active!!");
+      this.handleFriendObjAr()
+      return this.props.setCurrentUser(user);
+    })
+  }
 
+
+
+  pollRecSnapsInterval =null
+
+  handleFriendObjAr = ()=>{
     let testAr = []
     this.props.friends.forEach((rel)=>{
       if (rel.friender_id === this.props.currentUser.id) {
@@ -62,6 +76,33 @@ class Snapchat extends Component {
     this.props.setFriendObjAr(testAr)
   }
 
+  componentDidMount(){
+    // console.log('initial friends in sp', this.props.friends, 'USER IS', this.props.currentUser);
+    // console.log("all users", this.props.usersAr);
+
+    this.pollRecSnapsInterval = setInterval(()=> this.getNewRecSnaps(this.props.currentUser.id), 3000)
+    this.handleFriendObjAr()
+    // this.getNewRecSnaps(this.props.currentUser.id)
+
+    // let testAr = []
+    // this.props.friends.forEach((rel)=>{
+    //   if (rel.friender_id === this.props.currentUser.id) {
+    //     let foundFriend = this.props.usersAr.find(user=> user.id === rel.friendee_id)
+    //     testAr = [...testAr, foundFriend]
+    //   }else{
+    //     let foundFriend = this.props.usersAr.find(user=> user.id === rel.friender_id)
+    //     testAr = [...testAr, foundFriend]
+    //   }
+    // })
+    // // console.log('friendObjAr', testAr);
+    // this.props.setFriendObjAr(testAr)
+  }
+
+  componentWillUnmount(){
+    console.log("unmounted");
+    clearInterval(this.pollRecSnapsInterval)
+  }
+
   handleReset=()=>{
     this.props.setCurrentPhoto(null)
     this.props.updateSticker(null)
@@ -71,9 +112,11 @@ class Snapchat extends Component {
 
     return (
       <div >
+          <div className="nav">
+              {this.props.currentUser ? <Nav/> :null}
+              <button className="btn btn-outline-danger btn-sm" onClick={this.handleLogout} >Logout</button>
 
-      {this.props.currentUser ? <h1>HII {this.props.currentUser.name}</h1> :null}
-        <button className="btn btn-outline-danger btn-sm" onClick={this.handleLogout} >Logout</button>
+          </div>
         <div className="grid-container">
           <div className="grid-item" >
             <FriendContainer/>
@@ -82,8 +125,8 @@ class Snapchat extends Component {
 
 
           <div className="snap-container" >
-            {this.props.currentPhoto ? <img id="the-snap" src={this.props.currentPhoto}/> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
-            {this.props.sticker ? <img id="the-sticker" src={this.props.sticker}/> :null}
+            {this.props.currentPhoto ? <div className="image-sticker" ><img id="the-sticker" src={this.props.sticker}/><img id="the-snap" src={this.props.currentPhoto}/></div> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
+
             <br></br>
             <br></br>
             {this.props.currentPhoto ? <button className="btn btn-primary btn-sm" onClick={this.handleReset}>Take Another Pic</button>: <button className="btn btn-primary btn-sm" onClick={this.capture}>TAKE PIC</button>}
@@ -132,7 +175,9 @@ function mapDispatchToProps(dispatch) {
     setCurrentPhoto: (image)=> dispatch({type: 'SET_CURRENT_PHOTO', payload: image}),
     setFriendObjAr: (friendAr)=> dispatch({type: 'SET_FRIEND_OBJ_AR', payload: friendAr}),
     logout: ()=> dispatch({type: 'LOGOUT'}),
-    updateSticker: (stickerUrl)=> dispatch({type: 'UPDATE_STICKER', payload: stickerUrl})
+    updateSticker: (stickerUrl)=> dispatch({type: 'UPDATE_STICKER', payload: stickerUrl}),
+    pollingRecSnaps: (user) => dispatch({type: 'POLLING_REC_SNAPS', payload:user}),
+      setCurrentUser: (user)=> dispatch({type: 'SET_CURRENT_USER', payload:user})
 
   }
 }
