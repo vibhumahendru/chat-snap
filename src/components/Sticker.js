@@ -4,22 +4,41 @@ import {connect} from 'react-redux'
 
 class Sticker extends Component {
 
+  state={
+    chooseOwnSticker: false,
+    stickerInput: null
+  }
+
+  handleChange=(event)=>{
+      this.props.updateSticker(event.target.value)
+  }
+
   handleSelectSticker=(event)=>{
-    console.log(event.target.value);
+
     if (event.target.value === "New York") {
         this.props.updateSticker("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/I_Love_New_York.svg/2000px-I_Love_New_York.svg.png")
       }
       else if (event.target.value === "Flatiron School") {
         this.props.updateSticker("https://upload.wikimedia.org/wikipedia/commons/6/61/FS_wiki.png")
 
-      } else {
+      }
+      else if (event.target.value === "Poop") {
+        this.props.updateSticker("https://cdn.shopify.com/s/files/1/1061/1924/products/Poop_Emoji_2_large.png?v=1542436024")
+      }
+      else if(event.target.value === "Choose Your Own!"){
+          this.props.updateSticker(null)
+          this.setState({
+            chooseOwnSticker:true
+          })
+      }
+      else {
         this.props.updateSticker(null)
       }
 
   }
 
   render() {
-    console.log(this.props.sticker);
+
     return (
       <div>
           Add Sticker:
@@ -27,7 +46,11 @@ class Sticker extends Component {
           <option>Select one:</option>
           <option>New York</option>
           <option>Flatiron School</option>
+          <option>Poop</option>
+          <option>Choose Your Own!</option>
           </select>
+          <br></br>
+          {this.state.chooseOwnSticker ? <>Enter Url: <input onChange={(event)=>this.handleChange(event)} type="text"></input></> :null}
       </div>
     );
   }

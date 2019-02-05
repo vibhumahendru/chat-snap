@@ -53,7 +53,7 @@ class RecievedSnapContainer extends Component {
 
           <div className="seen-snaps" >
             <h3 id="opened">Opened</h3>
-            {this.props.recievedSnaps.filter(snap=> snap.viewed === true).map(snap=> <SeenSnap snap={snap}/>)}
+            {this.props.recievedSnaps.reverse().filter(snap=> snap.viewed === true).map(snap=> <SeenSnap snap={snap}/>)}
           </div>
       </div>
     );

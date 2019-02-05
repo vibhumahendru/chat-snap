@@ -57,7 +57,12 @@ function reducer(state=initialState, action) {
     case 'CHANGE_NEW_USERNAME':
         return {...state, newUsernameInput: action.payload}
     case 'UPDATE_STICKER':
-    return {...state, sticker:action.payload}    
+    return {...state, sticker:action.payload}
+    case 'ADD_SEEN_TO_REC_CON':
+      let openedSnap = action.payload
+      let copyRecSnaps = [...state.recievedSnaps]
+      let updatedRecSnaps = [...copyRecSnaps, openedSnap]
+    return {...state, recievedSnaps: updatedRecSnaps}
     default: return state
 
   }

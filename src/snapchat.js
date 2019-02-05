@@ -85,8 +85,8 @@ class Snapchat extends Component {
 
 
           <div className="snap-container" >
-            {this.props.currentPhoto ? <img id="the-snap" src={this.props.currentPhoto}/> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
-            {this.props.sticker ? <img id="the-sticker" src={this.props.sticker}/> :null}
+            {this.props.currentPhoto ? <div className="image-sticker" ><img id="the-sticker" src={this.props.sticker}/><img id="the-snap" src={this.props.currentPhoto}/></div> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
+
             <br></br>
             <br></br>
             {this.props.currentPhoto ? <button className="btn btn-primary btn-sm" onClick={this.handleReset}>Take Another Pic</button>: <button className="btn btn-primary btn-sm" onClick={this.capture}>TAKE PIC</button>}
