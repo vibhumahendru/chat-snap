@@ -27,6 +27,18 @@ class AddFriend extends Component {
             })
         })
 
+        fetch('http://localhost:3000/email', {
+          method:'POST',
+          headers:{
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              recieverId: foundUser.id,
+              senderId: this.props.currentUser.id
+            })
+        })
+
         alert(`You sent a friend request to ${foundUser.name}` )
 
       }else{
