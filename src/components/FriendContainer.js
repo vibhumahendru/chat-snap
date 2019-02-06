@@ -7,6 +7,7 @@ import Friend from './Friend.js'
 class FriendContainer extends Component {
 
 
+
   // notAcceptedRequests=()=>{
   //   let notAcceptedRequestsAr = this.props.currentUser.friendeed_relationships.filter(rel => rel.accepted == false)
   //   return notAcceptedRequestsAr
@@ -22,6 +23,7 @@ class FriendContainer extends Component {
     // console.log('updated- Friend Con -', this.props);
     return (
       <div>
+
       <h1>Your Friends</h1>
       {this.props.currentUser ?
         this.props.friends.map(request=> <Friend request={request}/>) :null
@@ -42,7 +44,8 @@ function mapStateToProps(state){
   return {
     currentUser: state.currentUser,
     friends: state.friends,
-    friendRequests: state.friendRequests
+    friendRequests: state.friendRequests,
+    usersAr: state.usersAr
   }
 }
 

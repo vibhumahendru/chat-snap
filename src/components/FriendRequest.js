@@ -21,7 +21,7 @@ class FriendRequest extends Component {
 
     let foundSenderOfReq = this.props.usersAr.find(user=> user.id === this.props.request.friender_id)
 
-    
+
 
     this.props.addFriendToFriendObjAr(foundSenderOfReq)
 

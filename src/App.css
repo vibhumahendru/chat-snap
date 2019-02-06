@@ -31,6 +31,15 @@
     width: 11px;
 }
 
+.friend-name{
+  display: inline-block;
+}
+
+.heart-emoji{
+  float: right;
+  height: 40px;
+}
+
 .seen-snaps{ overflow-y: scroll;
   height: 300px;
   background-color: white;
@@ -43,9 +52,23 @@
 
 }
 
+.main-welcome{
+  display: inline-block;
+}
+
 #the-snap{
  margin-top: 10px;
   width: 600px;
+}
+
+.stats{
+  float: right;
+  display: inline-block;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
 
 }
 

@@ -38,7 +38,9 @@ class RecievedSnapContainer extends Component {
   // }
 
 
+
   render() {
+    console.log(this.props.recievedSnaps);
     return (
       <div>
           <h1>New Snaps</h1>
@@ -53,7 +55,7 @@ class RecievedSnapContainer extends Component {
 
           <div className="seen-snaps" >
             <h3 id="opened">Opened</h3>
-            {this.props.recievedSnaps.reverse().filter(snap=> snap.viewed === true).map(snap=> <SeenSnap snap={snap}/>)}
+            {this.props.recievedSnaps.filter(snap=> snap.viewed === true).map(snap=> <SeenSnap snap={snap}/>).reverse()}
           </div>
       </div>
     );
