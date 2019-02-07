@@ -40,7 +40,7 @@ class RecievedSnapContainer extends Component {
 
 
   render() {
-    console.log(this.props.recievedSnaps);
+
     return (
       <div>
           <h1>New Snaps</h1>

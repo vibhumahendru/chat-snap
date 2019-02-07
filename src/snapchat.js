@@ -54,14 +54,14 @@ class Snapchat extends Component {
     fetch(`http://localhost:3000/users/${userId}`)
     .then(res => res.json())
     .then(user => {
-      console.log("polling active!!");
+      // console.log("polling active!!");
       this.handleFriendObjAr()
       return this.props.setCurrentUser(user);
     })
   }
 
   getUsers = ()=>{
-    console.log('poll users active');
+    // console.log('poll users active');
     fetch('http://localhost:3000/users')
     .then(res => res.json())
     .then(users => this.props.changeUserAr(users))

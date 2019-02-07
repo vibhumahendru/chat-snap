@@ -27,17 +27,17 @@ class AddFriend extends Component {
             })
         })
 
-        fetch('http://localhost:3000/email', {
-          method:'POST',
-          headers:{
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              recieverId: foundUser.id,
-              senderId: this.props.currentUser.id
-            })
-        })
+        // fetch('http://localhost:3000/email', {
+        //   method:'POST',
+        //   headers:{
+        //       'Accept': 'application/json',
+        //       'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //       recieverId: foundUser.id,
+        //       senderId: this.props.currentUser.id
+        //     })
+        // })
 
         alert(`You sent a friend request to ${foundUser.name}` )
 
@@ -46,13 +46,28 @@ class AddFriend extends Component {
       }
   }
 
+  handleFindNonFriends=()=>{
+    let nonFriendAr = []
+    this.props.usersAr.forEach(user=>{
+      if (this.props.friendObjAr.includes(user) || user.name === this.props.currentUser.name) {
+        return null
+      }else{
+        nonFriendAr = [...nonFriendAr, user]
+      }
+    })
+    return nonFriendAr
+  }
+
 
   render() {
+
     return (
       <div>
       <h1>Add Friend</h1>
-      <input onChange={this.handleChange} type="text" placeholder="add friend"></input>
-    
+      <input list="friends-com" onChange={this.handleChange} type="text" placeholder="add friend"></input>
+        <datalist id="friends-com">
+        {this.handleFindNonFriends().map(friend => <option value={friend.name}></option> )}
+        </datalist>
       <button onClick={this.handleClick} >Submit</button>
 
       </div>
@@ -65,7 +80,9 @@ function mapStateToProps(state){
   return {
     usersAr: state.usersAr,
     currentUser: state.currentUser,
-    addFriendInput: state.addFriendInput
+    addFriendInput: state.addFriendInput,
+    friendObjAr: state.friendObjAr,
+    friends: state.friends
   }
 }
 
