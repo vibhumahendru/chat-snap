@@ -8,7 +8,7 @@ import FriendContainer from './components/FriendContainer.js'
 import ChooseFriend from './components/ChooseFriend.js'
 import Sticker from './components/Sticker.js'
 import Nav from './components/Nav.js'
-
+import './shutter.mp3'
 
 
 class Snapchat extends Component {
@@ -32,6 +32,9 @@ class Snapchat extends Component {
       //       timer: this.props.setTimer
       //     })
       // })
+
+      var audio = new Audio('shutter.mp3');
+      audio.play()
     }
 
   setRef = webcam => {
@@ -57,9 +60,16 @@ class Snapchat extends Component {
     })
   }
 
+  getUsers = ()=>{
+    console.log('poll users active');
+    fetch('http://localhost:3000/users')
+    .then(res => res.json())
+    .then(users => this.props.changeUserAr(users))
+  }
 
 
   pollRecSnapsInterval =null
+  pollUsers = null
 
   handleFriendObjAr = ()=>{
     let testAr = []
@@ -79,8 +89,9 @@ class Snapchat extends Component {
   componentDidMount(){
     // console.log('initial friends in sp', this.props.friends, 'USER IS', this.props.currentUser);
     // console.log("all users", this.props.usersAr);
-
+    this.pollUsers = setInterval(()=> this.getUsers(), 2900)
     this.pollRecSnapsInterval = setInterval(()=> this.getNewRecSnaps(this.props.currentUser.id), 3000)
+
     this.handleFriendObjAr()
     // this.getNewRecSnaps(this.props.currentUser.id)
 
@@ -101,6 +112,7 @@ class Snapchat extends Component {
   componentWillUnmount(){
     console.log("unmounted");
     clearInterval(this.pollRecSnapsInterval)
+    clearInterval(this.pollUsers)
   }
 
   handleReset=()=>{
@@ -112,11 +124,10 @@ class Snapchat extends Component {
 
     return (
       <div >
-          <div className="nav">
+          <nav >
               {this.props.currentUser ? <Nav/> :null}
               <button className="btn btn-outline-danger btn-sm" onClick={this.handleLogout} >Logout</button>
-
-          </div>
+          </nav>
         <div className="grid-container">
           <div className="grid-item" >
             <FriendContainer/>
@@ -177,7 +188,8 @@ function mapDispatchToProps(dispatch) {
     logout: ()=> dispatch({type: 'LOGOUT'}),
     updateSticker: (stickerUrl)=> dispatch({type: 'UPDATE_STICKER', payload: stickerUrl}),
     pollingRecSnaps: (user) => dispatch({type: 'POLLING_REC_SNAPS', payload:user}),
-      setCurrentUser: (user)=> dispatch({type: 'SET_CURRENT_USER', payload:user})
+      setCurrentUser: (user)=> dispatch({type: 'SET_CURRENT_USER', payload:user}),
+      changeUserAr: (userAr)=> dispatch({type: 'SET_USER_ARRAY', payload: userAr})
 
   }
 }

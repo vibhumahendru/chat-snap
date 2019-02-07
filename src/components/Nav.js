@@ -6,8 +6,11 @@ class Nav extends Component {
   render() {
     return (
       <div>
-      <h1>Welcome: {this.props.currentUser.name}</h1>
-
+        <h1 className="main-welcome">Welcome: {this.props.currentUser.name}</h1>
+        <div className="stats">
+          Total recieved snaps: {this.props.currentUser.recieved_snaps.length}<br></br>
+          Total sent snaps: {this.props.currentUser.sent_snaps.length}
+        </div>
       </div>
     );
   }
