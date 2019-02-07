@@ -38,7 +38,6 @@ class RecievedSnapContainer extends Component {
   // }
 
 
-
   render() {
 
     return (
@@ -50,8 +49,10 @@ class RecievedSnapContainer extends Component {
           }
           </div>
           {
-            this.props.selectedSnap ? <div id="snap-back"><img id="the-snap" src={this.props.selectedSnap.dataUri}/><img id="the-sticker-viewing" src={this.props.selectedSnap.stickerUrl}/></div> :null
+            this.props.selectedSnap ? <div id="snap-back"><div className="wrapper-take-photo"><h3 className="view-message">{this.props.selectedSnap.message}</h3><img id="the-snap" src={this.props.selectedSnap.dataUri}/><img id="the-sticker-viewing" src={this.props.selectedSnap.stickerUrl}/></div></div> :null
           }
+
+
 
           <div className="seen-snaps" >
             <h3 id="opened">Opened</h3>

@@ -26,10 +26,11 @@ class SignUp extends Component {
           })
       }).then(res => res.json())
       .then(user => this.props.setCurrentUser(user))
+      .then(this.props.history.push('/main'))
 
       alert("Your account is ready!")
 
-      this.props.history.push('/main')
+
 
 
     }

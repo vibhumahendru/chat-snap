@@ -9,8 +9,8 @@
 #the-sticker-viewing{
   position: absolute;
   top: 30px;
-  left: 35%;
-  width: 10%
+  left: 15%;
+  width: 20%
 }
 
 #snap-back{
@@ -20,11 +20,37 @@
     left: 0;
     width: 100%;
     min-height: 100vh;
+    padding-top: 105px;
 }
 
 .rec-snap-container{
   overflow-y: scroll;
   height: 300px;
+}
+.view-message{
+  display: inline-block;
+  background-color: rgba(0,0,0, 0.7);
+  color: white;
+  position: absolute;
+  width: 100%;
+  left:0;
+  bottom: 0;
+
+}
+
+#snap-back .wrapper-take-photo{
+  width: 600px;
+  margin: 0 auto;
+}
+
+#snap-back .view-message{
+  width: 600px;
+  margin: 0 auto 6px;
+  display: inline-block;
+}
+
+.wrapper-take-photo{
+  position: relative;
 }
 
 .seen-snaps::-webkit-scrollbar:vertical {

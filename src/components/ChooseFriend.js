@@ -22,7 +22,8 @@ class ChooseFreind extends Component {
           reciever_id: this.props.recipientOfSnap.id,
           dataUri: this.props.currentPhoto,
           timer: this.props.setTimer,
-          stickerUrl: this.props.sticker
+          stickerUrl: this.props.sticker,
+          message: this.props.message
         })
     })
     alert(`You sent a snap to ${this.props.recipientOfSnap.name}`)
@@ -31,6 +32,7 @@ class ChooseFreind extends Component {
     this.props.changeSetTimer(1)
     this.props.setCurrentPhoto(null)
     this.props.updateSticker(null)
+    this.props.changeMessage(null)
   }
 
   render() {
@@ -59,7 +61,8 @@ function mapStateToProps(state){
     recipientOfSnap: state.recipientOfSnap,
     setTimer: state.setTimer,
     currentPhoto: state.currentPhoto,
-    sticker:state.sticker
+    sticker:state.sticker,
+    message: state.message
 
   }
 }
@@ -69,7 +72,8 @@ function mapDispatchToProps(dispatch) {
     setRecipient: (recipient)=> dispatch({type: 'SET_RECIPIENT', payload: recipient}),
     changeSetTimer: (time)=> dispatch({type:'CHANGE_TIMER', payload: time}),
     setCurrentPhoto: (image)=> dispatch({type: 'SET_CURRENT_PHOTO', payload: image}),
-    updateSticker: (stickerUrl)=> dispatch({type: 'UPDATE_STICKER', payload: stickerUrl})
+    updateSticker: (stickerUrl)=> dispatch({type: 'UPDATE_STICKER', payload: stickerUrl}),
+    changeMessage :(message)=> dispatch({type: 'CHANGE_MESSAGE', payload: message})
 
   }
 }

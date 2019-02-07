@@ -37,7 +37,8 @@ class RecievedSnap extends Component {
     return (
       <div className="recieved-snap" onClick={()=>this.handleViewSnap(this.props.snap)}>
         <img className="friend-bitmoji" src="http://emojipedia-us.s3.amazonaws.com/content/2015/08/26/snapchat-recieved-snap-without-audio.png"/>
-        From {this.getSenderName(this.props.snap)}
+        From {this.getSenderName(this.props.snap)}<br></br>
+        At: {this.props.snap.created_at}
       </div>
     );
   }

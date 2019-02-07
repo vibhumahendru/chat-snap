@@ -46,21 +46,31 @@ class AddFriend extends Component {
       }
   }
 
+
   handleFindNonFriends=()=>{
     let nonFriendAr = []
-    this.props.usersAr.forEach(user=>{
-      if (this.props.friendObjAr.includes(user) || user.name === this.props.currentUser.name) {
-        return null
-      }else{
-        nonFriendAr = [...nonFriendAr, user]
-      }
-    })
+    if (this.props.currentUser) {
+      this.props.usersAr.forEach(user=>{
+        if (this.props.frObjAr.includes(user) || user.name === this.props.currentUser.name) {
+          return null
+        }else{
+          nonFriendAr = [...nonFriendAr, user]
+        }
+      })
+      return nonFriendAr
+    }
     return nonFriendAr
+
   }
 
 
-  render() {
 
+
+
+
+
+  render() {
+    
     return (
       <div>
       <h1>Add Friend</h1>

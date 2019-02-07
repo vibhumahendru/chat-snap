@@ -9,6 +9,7 @@ import ChooseFriend from './components/ChooseFriend.js'
 import Sticker from './components/Sticker.js'
 import Nav from './components/Nav.js'
 import './shutter.mp3'
+import TextFeature from './components/TextFeature.js'
 
 
 class Snapchat extends Component {
@@ -131,12 +132,12 @@ class Snapchat extends Component {
         <div className="grid-container">
           <div className="grid-item" >
             <FriendContainer/>
-            <AddFriend/>
+            <AddFriend frObjAr={this.props.friendObjAr}/>
           </div>
 
 
           <div className="snap-container" >
-            {this.props.currentPhoto ? <div className="image-sticker" ><img id="the-sticker" src={this.props.sticker}/><img id="the-snap" src={this.props.currentPhoto}/></div> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
+            {this.props.currentPhoto ? <div className="image-sticker" ><div className="wrapper-take-photo"><h3 className="view-message">{this.props.message}</h3><img id="the-sticker" src={this.props.sticker}/><img id="the-snap" src={this.props.currentPhoto}/></div></div> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
 
             <br></br>
             <br></br>
@@ -154,6 +155,7 @@ class Snapchat extends Component {
             <option>9</option>
             <option>10</option></select></> :null}
             {this.props.currentPhoto ? <Sticker/> :null}
+            {this.props.currentPhoto ? <TextFeature/> :null}
             {this.props.currentPhoto ? <ChooseFriend friendObjAr={this.props.friendObjAr}/> :null}
 
           </div>
@@ -176,7 +178,8 @@ function mapStateToProps(state){
     usersAr: state.usersAr,
     friendObjAr: state.friendObjAr,
     recievedSnaps: state.recievedSnaps,
-    sticker:state.sticker
+    sticker:state.sticker,
+    message: state.message
   }
 }
 
