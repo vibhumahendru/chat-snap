@@ -10,6 +10,12 @@ class AddFriend extends Component {
   }
 
   handleClick=()=>{
+
+    let alreadyFriend = this.props.friendObjAr.find(user=> user.name === this.props.addFriendInput)
+    if (alreadyFriend) {
+      alert(`You are already friends with ${alreadyFriend.name}`)
+      return null
+    }
     let foundUser= this.props.usersAr.find(user=> user.name === this.props.addFriendInput)
       if (foundUser) {
         console.log(foundUser.name, foundUser.id)
@@ -42,7 +48,7 @@ class AddFriend extends Component {
         alert(`You sent a friend request to ${foundUser.name}` )
 
       }else{
-        console.log("No Such User");
+        alert("No Such User");
       }
   }
 
@@ -70,7 +76,7 @@ class AddFriend extends Component {
 
 
   render() {
-    
+
     return (
       <div>
       <h1>Add Friend</h1>

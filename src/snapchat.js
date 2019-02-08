@@ -87,9 +87,18 @@ class Snapchat extends Component {
     this.props.setFriendObjAr(testAr)
   }
 
+
+
   componentDidMount(){
     // console.log('initial friends in sp', this.props.friends, 'USER IS', this.props.currentUser);
     // console.log("all users", this.props.usersAr);
+  
+    if (this.props.currentUser === null) {
+      console.log("SUP NULL");
+      this.handleLogout()
+    }
+
+
     this.pollUsers = setInterval(()=> this.getUsers(), 2900)
     this.pollRecSnapsInterval = setInterval(()=> this.getNewRecSnaps(this.props.currentUser.id), 3000)
 
@@ -112,6 +121,7 @@ class Snapchat extends Component {
 
   componentWillUnmount(){
     console.log("unmounted");
+
     clearInterval(this.pollRecSnapsInterval)
     clearInterval(this.pollUsers)
   }

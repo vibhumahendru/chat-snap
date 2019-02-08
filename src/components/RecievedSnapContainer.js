@@ -44,6 +44,7 @@ class RecievedSnapContainer extends Component {
       <div>
           <h1>New Snaps</h1>
             <div className="rec-snap-container">
+            {this.props.recievedSnaps.filter(snap=> snap.viewed === false).length === 0 ? <h4 id="no-new-snaps">No New Snaps</h4> :null}
           {
             this.props.recievedSnaps.filter(snap=> snap.viewed === false).map(snap=> <RecievedSnap snap={snap}/>)
           }
@@ -56,6 +57,7 @@ class RecievedSnapContainer extends Component {
 
           <div className="seen-snaps" >
             <h3 id="opened">Opened</h3>
+            {this.props.recievedSnaps.filter(snap=> snap.viewed === true).length === 0 ? <h4 id="no-new-snaps">No received Snaps yet</h4> :null}
             {this.props.recievedSnaps.filter(snap=> snap.viewed === true).map(snap=> <SeenSnap snap={snap}/>).reverse()}
           </div>
       </div>

@@ -21,11 +21,19 @@
     width: 100%;
     min-height: 100vh;
     padding-top: 105px;
+
 }
 
 .rec-snap-container{
   overflow-y: scroll;
   height: 300px;
+
+  background-color:  #e6ffff;
+  border: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: red;
+  margin-bottom: 10%;
 }
 .view-message{
   display: inline-block;
@@ -78,8 +86,29 @@
 
 }
 
+#no-new-snaps{
+  padding-top: 20%;
+  color:  #b30047;
+}
+
 .main-welcome{
   display: inline-block;
+}
+
+.rec-friend-request{
+  border: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: purple;
+}
+
+.new-friend-req .btn.btn-success{
+  margin-left: 10px;
+}
+
+#logo{
+  margin-top: 10px;
+   width: 20%;
 }
 
 #the-snap{

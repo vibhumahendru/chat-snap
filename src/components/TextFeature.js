@@ -10,7 +10,7 @@ class TextFeature extends Component {
 
 
   render() {
-    console.log('message =',this.props.message);
+    
     return (
       <div>
         Text: <input onChange={(event)=>this.handleMessageChange(event)} type="text" ></input>

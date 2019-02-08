@@ -47,8 +47,9 @@ class FriendRequest extends Component {
   render() {
 
     return (
-      <div>New Friend request from {this.handleFindSenderReq()}
-        <button onClick={this.handleAcceptFR}>Accept</button>
+      <div className="alert alert-primary new-friend-req">
+      New Friend request from {this.handleFindSenderReq()}{''}
+        <button className="btn btn-success btn-sm" onClick={this.handleAcceptFR}>Accept</button>
       </div>
     );
   }
