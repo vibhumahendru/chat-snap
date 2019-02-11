@@ -40,7 +40,7 @@ class ChooseFreind extends Component {
   render() {
 
     return (
-      <div>
+      <div className="choose-friend">
       Send to...
       <select className="btn btn-info dropdown-toggle" onChange={(event)=>this.handleSelectSender(event)}>
       <option>Select one:</option>

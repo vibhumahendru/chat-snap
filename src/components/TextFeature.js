@@ -18,10 +18,10 @@ class TextFeature extends Component {
   render() {
 
     return (
-      <div>
+      <div className="color-box">
         Text: <input onChange={(event)=>this.handleMessageChange(event)} type="text" ></input>
         <br></br>
-        {this.props.message ? <GithubPicker className="color-picker" onChange={this.handleColorChange} /> :null}
+        <GithubPicker className="color-picker" onChange={this.handleColorChange} />
       </div>
     );
   }

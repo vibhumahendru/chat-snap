@@ -40,7 +40,7 @@ class Sticker extends Component {
   render() {
 
     return (
-      <div>
+      <div className='sticker-box'>
           Add Sticker:
           <select onChange={(event)=>this.handleSelectSticker(event)} className="btn btn-secondary dropdown-toggle">
           <option>Select one:</option>

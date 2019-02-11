@@ -153,21 +153,30 @@ class Snapchat extends Component {
             <br></br>
             {this.props.currentPhoto ? <button className="btn btn-primary btn-sm" onClick={this.handleReset}>Take Another Pic</button>: <button className="btn btn-primary btn-sm" onClick={this.capture}>TAKE PIC</button>}
             <br></br>
-          {this.props.currentPhoto ? <><>Timer</><select onChange={(event)=> this.setTimer(event)}>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option></select></> :null}
-            {this.props.currentPhoto ? <Sticker/> :null}
-            {this.props.currentPhoto ? <TextFeature/> :null}
-            {this.props.currentPhoto ? <ChooseFriend friendObjAr={this.props.friendObjAr}/> :null}
+            <div className="editor">
+              {this.props.currentPhoto ? null: <h6 className="placeholder-editor">Take picture to edit</h6>}
+                <div className="col-one">
+                {this.props.currentPhoto ? <div className='timer-box' ><>Timer</><select onChange={(event)=> this.setTimer(event)}>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option></select></div> :null}
+                  {this.props.currentPhoto ? <Sticker/> :null}
+                  {this.props.currentPhoto ? <TextFeature/> :null}
+                </div>
+            <div className="col-two">
 
+
+                    {this.props.currentPhoto ? <ChooseFriend className="choose-friend" friendObjAr={this.props.friendObjAr}/> :null}
+                    </div>
+
+            </div>
           </div>
         {this.props.currentUser ?
           <div className="grid-item" ><RecievedSnapContainer/></div> :null

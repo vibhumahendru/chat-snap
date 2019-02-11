@@ -31,6 +31,13 @@ class AddFriend extends Component {
               friendee_id: foundUser.id
 
             })
+        }).then(res => res.json())
+        .then(user=> {
+          if (user.error) {
+            return alert(`Friend request already sent to ${foundUser.name}`)
+          }else{
+              alert(`You sent a friend request to ${foundUser.name}` )
+          }
         })
 
         // fetch('http://localhost:3000/email', {
@@ -45,7 +52,7 @@ class AddFriend extends Component {
         //     })
         // })
 
-        alert(`You sent a friend request to ${foundUser.name}` )
+
 
       }else{
         alert("No Such User");
@@ -78,7 +85,7 @@ class AddFriend extends Component {
   render() {
 
     return (
-      <div>
+      <div className="add-friend-box">
       <h1>Add Friend</h1>
       <input list="friends-com" onChange={this.handleChange} type="text" placeholder="add friend"></input>
         <datalist id="friends-com">
