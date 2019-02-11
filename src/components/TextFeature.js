@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
+import { GithubPicker } from 'react-color';
 
 class TextFeature extends Component {
 
@@ -8,12 +9,19 @@ class TextFeature extends Component {
     this.props.changeMessage(event.target.value)
   }
 
+  handleColorChange=(color)=>{
+    console.log(color.hex)
+    this.props.changeTextColor(color.hex)
+  }
+
 
   render() {
-    
+
     return (
       <div>
         Text: <input onChange={(event)=>this.handleMessageChange(event)} type="text" ></input>
+        <br></br>
+        {this.props.message ? <GithubPicker className="color-picker" onChange={this.handleColorChange} /> :null}
       </div>
     );
   }
@@ -34,7 +42,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch) {
   return {
     changeFriendInput: (friendInput) => dispatch({type: 'CHANGE_FRIEND_INPUT',payload: friendInput}),
-    changeMessage :(message)=> dispatch({type: 'CHANGE_MESSAGE', payload: message})
+    changeMessage :(message)=> dispatch({type: 'CHANGE_MESSAGE', payload: message}),
+    changeTextColor: (color)=> dispatch({type: 'CHANGE_TEXT_COLOR', payload: color})
   }
 }
 

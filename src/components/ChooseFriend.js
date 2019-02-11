@@ -23,7 +23,8 @@ class ChooseFreind extends Component {
           dataUri: this.props.currentPhoto,
           timer: this.props.setTimer,
           stickerUrl: this.props.sticker,
-          message: this.props.message
+          message: this.props.message,
+          textColor: this.props.textColor
         })
     })
     alert(`You sent a snap to ${this.props.recipientOfSnap.name}`)
@@ -33,6 +34,7 @@ class ChooseFreind extends Component {
     this.props.setCurrentPhoto(null)
     this.props.updateSticker(null)
     this.props.changeMessage(null)
+    this.props.changeTextColor(null)
   }
 
   render() {
@@ -62,7 +64,8 @@ function mapStateToProps(state){
     setTimer: state.setTimer,
     currentPhoto: state.currentPhoto,
     sticker:state.sticker,
-    message: state.message
+    message: state.message,
+    textColor: state.textColor
 
   }
 }
@@ -73,7 +76,9 @@ function mapDispatchToProps(dispatch) {
     changeSetTimer: (time)=> dispatch({type:'CHANGE_TIMER', payload: time}),
     setCurrentPhoto: (image)=> dispatch({type: 'SET_CURRENT_PHOTO', payload: image}),
     updateSticker: (stickerUrl)=> dispatch({type: 'UPDATE_STICKER', payload: stickerUrl}),
-    changeMessage :(message)=> dispatch({type: 'CHANGE_MESSAGE', payload: message})
+    changeMessage :(message)=> dispatch({type: 'CHANGE_MESSAGE', payload: message}),
+    changeTextColor: (color)=> dispatch({type: 'CHANGE_TEXT_COLOR', payload: color})
+
 
   }
 }

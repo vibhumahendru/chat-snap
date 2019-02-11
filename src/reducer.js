@@ -13,7 +13,8 @@ let initialState = {
   recievedSnaps:[],
   newUsernameInput:null,
   sticker:null,
-  message: null
+  message: null,
+  textColor: "white"
 }
 
 function reducer(state=initialState, action) {
@@ -70,6 +71,8 @@ function reducer(state=initialState, action) {
     return{...state, recievedSnaps: pollRecSnaps}
     case 'CHANGE_MESSAGE':
     return {...state, message:action.payload }
+    case 'CHANGE_TEXT_COLOR':
+    return {...state, textColor: action.payload}
     default: return state
 
   }

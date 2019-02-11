@@ -147,7 +147,7 @@ class Snapchat extends Component {
 
 
           <div className="snap-container" >
-            {this.props.currentPhoto ? <div className="image-sticker" ><div className="wrapper-take-photo"><h3 className="view-message">{this.props.message}</h3><img id="the-sticker" src={this.props.sticker}/><img id="the-snap" src={this.props.currentPhoto}/></div></div> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
+            {this.props.currentPhoto ? <div className="image-sticker" ><div className="wrapper-take-photo"><h3 style={ { color: `${ this.props.textColor }` } } className="view-message">{this.props.message}</h3><img id="the-sticker" src={this.props.sticker}/><img id="the-snap" src={this.props.currentPhoto}/></div></div> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
 
             <br></br>
             <br></br>
@@ -189,7 +189,8 @@ function mapStateToProps(state){
     friendObjAr: state.friendObjAr,
     recievedSnaps: state.recievedSnaps,
     sticker:state.sticker,
-    message: state.message
+    message: state.message,
+    textColor: state.textColor
   }
 }
 

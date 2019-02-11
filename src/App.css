@@ -48,6 +48,10 @@
 
 }
 
+.color-picker{
+  width: 50px
+}
+
 #snap-back .wrapper-take-photo{
   width: 600px;
   margin: 0 auto;
