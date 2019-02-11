@@ -92,7 +92,7 @@ class Snapchat extends Component {
   componentDidMount(){
     // console.log('initial friends in sp', this.props.friends, 'USER IS', this.props.currentUser);
     // console.log("all users", this.props.usersAr);
-  
+
     if (this.props.currentUser === null) {
       console.log("SUP NULL");
       this.handleLogout()
