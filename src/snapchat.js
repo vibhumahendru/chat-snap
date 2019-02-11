@@ -129,6 +129,7 @@ class Snapchat extends Component {
   handleReset=()=>{
     this.props.setCurrentPhoto(null)
     this.props.updateSticker(null)
+
   }
 
   render() {
@@ -136,8 +137,7 @@ class Snapchat extends Component {
     return (
       <div >
           <nav >
-              {this.props.currentUser ? <Nav/> :null}
-              <button className="btn btn-outline-danger btn-sm" onClick={this.handleLogout} >Logout</button>
+              {this.props.currentUser ? <Nav history={this.props.history}/> :null}
           </nav>
         <div className="grid-container">
           <div className="grid-item" >

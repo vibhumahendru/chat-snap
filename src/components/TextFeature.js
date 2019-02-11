@@ -21,7 +21,9 @@ class TextFeature extends Component {
       <div className="color-box">
         Text: <input onChange={(event)=>this.handleMessageChange(event)} type="text" ></input>
         <br></br>
-        <GithubPicker className="color-picker" onChange={this.handleColorChange} />
+        <div className="test-color">
+        <GithubPicker width="100%" onChange={this.handleColorChange} />
+        </div>
       </div>
     );
   }
