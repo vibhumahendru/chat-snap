@@ -27,9 +27,10 @@ class SignUp extends Component {
       }).then(res => res.json())
       .then(user => this.props.setCurrentUser(user))
 
+
       alert("Your account is ready!")
 
-      this.props.history.push('/main')
+      setTimeout(()=>this.props.history.push('/main'), 500)
 
 
     }

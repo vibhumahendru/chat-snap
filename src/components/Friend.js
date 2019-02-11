@@ -20,12 +20,12 @@ class Friend extends Component {
       return false
     }
     else {
-      console.log(this.props.currentUser.sent_snaps);
+
        let recieverIdAr = this.props.currentUser.sent_snaps.map(snap=> snap.reciever_id)
-       console.log('recieverIdAr', recieverIdAr);
+
 
        let uniqueRecSnapIdAr = [...new Set(recieverIdAr)];
-       console.log('YO',uniqueRecSnapIdAr);
+
        let mainCounter = {id: null, count:0}
        uniqueRecSnapIdAr.forEach((element)=> {
          let counterAr = recieverIdAr.filter(id => id === element)
@@ -34,9 +34,9 @@ class Friend extends Component {
              mainCounter.id = element
          }
        })
-       console.log('big one',mainCounter);
+
        let foundBF = this.props.usersAr.find(user=> user.id === mainCounter.id)
-       console.log('THE ONE', foundBF);
+
        return foundBF.name
 
     }
@@ -46,7 +46,7 @@ class Friend extends Component {
 
 
   render() {
-      console.log(this.handleFindHeart());
+
     return (
       <div className="alert alert-success">
       <img className="friend-bitmoji" src="http://christinagriffis.com/wp-content/uploads/2018/02/Christina-Bitmoji-Circle-01.png"/>

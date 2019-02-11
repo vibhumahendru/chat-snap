@@ -38,23 +38,26 @@ class RecievedSnapContainer extends Component {
   // }
 
 
-
   render() {
-    console.log(this.props.recievedSnaps);
+
     return (
       <div>
           <h1>New Snaps</h1>
             <div className="rec-snap-container">
+            {this.props.recievedSnaps.filter(snap=> snap.viewed === false).length === 0 ? <h4 id="no-new-snaps">No New Snaps</h4> :null}
           {
             this.props.recievedSnaps.filter(snap=> snap.viewed === false).map(snap=> <RecievedSnap snap={snap}/>)
           }
           </div>
           {
-            this.props.selectedSnap ? <div id="snap-back"><img id="the-snap" src={this.props.selectedSnap.dataUri}/><img id="the-sticker-viewing" src={this.props.selectedSnap.stickerUrl}/></div> :null
+            this.props.selectedSnap ? <div id="snap-back"><div className="wrapper-take-photo"><h3 className="view-message">{this.props.selectedSnap.message}</h3><img id="the-snap" src={this.props.selectedSnap.dataUri}/><img id="the-sticker-viewing" src={this.props.selectedSnap.stickerUrl}/></div></div> :null
           }
+
+
 
           <div className="seen-snaps" >
             <h3 id="opened">Opened</h3>
+            {this.props.recievedSnaps.filter(snap=> snap.viewed === true).length === 0 ? <h4 id="no-new-snaps">No received Snaps yet</h4> :null}
             {this.props.recievedSnaps.filter(snap=> snap.viewed === true).map(snap=> <SeenSnap snap={snap}/>).reverse()}
           </div>
       </div>

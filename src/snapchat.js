@@ -9,6 +9,7 @@ import ChooseFriend from './components/ChooseFriend.js'
 import Sticker from './components/Sticker.js'
 import Nav from './components/Nav.js'
 import './shutter.mp3'
+import TextFeature from './components/TextFeature.js'
 
 
 class Snapchat extends Component {
@@ -54,14 +55,14 @@ class Snapchat extends Component {
     fetch(`http://localhost:3000/users/${userId}`)
     .then(res => res.json())
     .then(user => {
-      console.log("polling active!!");
+      // console.log("polling active!!");
       this.handleFriendObjAr()
       return this.props.setCurrentUser(user);
     })
   }
 
   getUsers = ()=>{
-    console.log('poll users active');
+    // console.log('poll users active');
     fetch('http://localhost:3000/users')
     .then(res => res.json())
     .then(users => this.props.changeUserAr(users))
@@ -86,9 +87,18 @@ class Snapchat extends Component {
     this.props.setFriendObjAr(testAr)
   }
 
+
+
   componentDidMount(){
     // console.log('initial friends in sp', this.props.friends, 'USER IS', this.props.currentUser);
     // console.log("all users", this.props.usersAr);
+
+    if (this.props.currentUser === null) {
+      console.log("SUP NULL");
+      this.handleLogout()
+    }
+
+
     this.pollUsers = setInterval(()=> this.getUsers(), 2900)
     this.pollRecSnapsInterval = setInterval(()=> this.getNewRecSnaps(this.props.currentUser.id), 3000)
 
@@ -111,6 +121,7 @@ class Snapchat extends Component {
 
   componentWillUnmount(){
     console.log("unmounted");
+
     clearInterval(this.pollRecSnapsInterval)
     clearInterval(this.pollUsers)
   }
@@ -131,12 +142,12 @@ class Snapchat extends Component {
         <div className="grid-container">
           <div className="grid-item" >
             <FriendContainer/>
-            <AddFriend/>
+            <AddFriend frObjAr={this.props.friendObjAr}/>
           </div>
 
 
           <div className="snap-container" >
-            {this.props.currentPhoto ? <div className="image-sticker" ><img id="the-sticker" src={this.props.sticker}/><img id="the-snap" src={this.props.currentPhoto}/></div> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
+            {this.props.currentPhoto ? <div className="image-sticker" ><div className="wrapper-take-photo"><h3 className="view-message">{this.props.message}</h3><img id="the-sticker" src={this.props.sticker}/><img id="the-snap" src={this.props.currentPhoto}/></div></div> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
 
             <br></br>
             <br></br>
@@ -154,6 +165,7 @@ class Snapchat extends Component {
             <option>9</option>
             <option>10</option></select></> :null}
             {this.props.currentPhoto ? <Sticker/> :null}
+            {this.props.currentPhoto ? <TextFeature/> :null}
             {this.props.currentPhoto ? <ChooseFriend friendObjAr={this.props.friendObjAr}/> :null}
 
           </div>
@@ -176,7 +188,8 @@ function mapStateToProps(state){
     usersAr: state.usersAr,
     friendObjAr: state.friendObjAr,
     recievedSnaps: state.recievedSnaps,
-    sticker:state.sticker
+    sticker:state.sticker,
+    message: state.message
   }
 }
 

@@ -12,7 +12,8 @@ let initialState = {
   recipientOfSnap: null,
   recievedSnaps:[],
   newUsernameInput:null,
-  sticker:null
+  sticker:null,
+  message: null
 }
 
 function reducer(state=initialState, action) {
@@ -67,6 +68,8 @@ function reducer(state=initialState, action) {
       let user = action.payload
       let pollRecSnaps = user.recieved_snaps
     return{...state, recievedSnaps: pollRecSnaps}
+    case 'CHANGE_MESSAGE':
+    return {...state, message:action.payload }
     default: return state
 
   }
