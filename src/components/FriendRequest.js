@@ -3,6 +3,17 @@ import {connect} from 'react-redux'
 
 class FriendRequest extends Component {
 
+  handleDecline=()=>{
+    fetch(`http://localhost:3000/relationships/${this.props.request.id}`, {
+      method:'DELETE',
+      headers:{
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+    })
+    alert("Request was declined.")
+  }
+
   handleAcceptFR=()=>{
     // console.log('inside accpet',this.props.request);
     fetch(`http://localhost:3000/relationships/${this.props.request.id}`, {
@@ -50,6 +61,7 @@ class FriendRequest extends Component {
       <div className="alert alert-primary new-friend-req">
       New Friend request from {this.handleFindSenderReq()}{''}
         <button className="btn btn-success btn-sm" onClick={this.handleAcceptFR}>Accept</button>
+        <button onClick={this.handleDecline} className="btn btn-danger btn-sm" >X</button>
       </div>
     );
   }

@@ -37,6 +37,16 @@ class RecievedSnapContainer extends Component {
   //   return foundSender.name
   // }
 
+  // componentDidMount(){
+  //   this.setState({
+  //     testColor: "red"
+  //   })
+  // }
+  //
+  // state = {
+  //   testColor: "red"
+  // }
+
 
   render() {
 
@@ -50,7 +60,7 @@ class RecievedSnapContainer extends Component {
           }
           </div>
           {
-            this.props.selectedSnap ? <div id="snap-back"><div className="wrapper-take-photo"><h3 className="view-message">{this.props.selectedSnap.message}</h3><img id="the-snap" src={this.props.selectedSnap.dataUri}/><img id="the-sticker-viewing" src={this.props.selectedSnap.stickerUrl}/></div></div> :null
+            this.props.selectedSnap ? <div id="snap-back"><div className="wrapper-take-photo"><h3 style={ { color: `${ this.props.selectedSnap.textColor }` } } className="view-message">{this.props.selectedSnap.message}</h3><img id="the-snap" src={this.props.selectedSnap.dataUri}/><img id="the-sticker-viewing" src={this.props.selectedSnap.stickerUrl}/></div></div> :null
           }
 
 

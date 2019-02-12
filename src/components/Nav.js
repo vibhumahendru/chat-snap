@@ -3,10 +3,28 @@ import {connect} from 'react-redux'
 
 class Nav extends Component {
 
+  handleLogout=()=> {
+    this.props.logout()
+    this.props.history.push('/login')
+  }
+
   render() {
     return (
-      <div>
-        <h1 className="main-welcome">Welcome: {this.props.currentUser.name}</h1>
+      <div className="nav-div">
+          <div className="welc-logout">
+            <div >
+              <h2>Welcome: {this.props.currentUser.name}</h2>
+            </div>
+            <div >
+              <button  className="btn btn-outline-danger btn-sm" onClick={this.handleLogout} >Logout</button>
+            </div>
+          </div>
+
+
+        <div id="nav-icon-div">
+        <img id="nav-icon" src={require(`../snapIcon.png`)}/>
+        <h4>Chat Snap</h4>
+        </div>
         <div className="stats">
           Total recieved snaps: {this.props.currentUser.recieved_snaps.length}<br></br>
           Total sent snaps: {this.props.currentUser.sent_snaps.length}

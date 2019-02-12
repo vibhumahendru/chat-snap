@@ -48,6 +48,105 @@
 
 }
 
+.placeholder-editor{
+  color:white;
+
+}
+
+.choose-friend{
+/* float: right; */
+/* margin-right: 10px; */
+display: inline-block;
+border: solid;
+border-color: #05F140;
+border-width: 2px;
+border-radius: 10px;
+padding: 5px;
+width: 80%;
+background-color: #b3e5b5;
+}
+
+.editor{
+  border-style: solid;
+  border-color: orange;
+  border-width: 5px;
+  border-radius: 10px;
+  display: flex;
+  margin: 20px auto 0;
+  width: 80%;
+  min-height: 30%;
+  padding: 10px;
+  background-color: grey;
+
+}
+
+.add-friend-box{
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  padding: 15px;
+  background-color:#ffccdd;
+}
+
+.github-picker{
+  width: 100%
+}
+.timer-box{
+  margin: 7px;
+  display: inline-block;
+
+  border: solid;
+  border-color: #96E8BC;
+  border-width: 2px;
+  border-radius: 10px;
+  padding: 5px;
+  width: 60%;
+  background-color: #bec3c8;
+}
+
+.sticker-box{
+  margin: 10px;
+  display: inline-block;
+  border: solid;
+  border-color: #8AF3FF;
+  border-width: 2px;
+  border-radius: 10px;
+  padding: 8px;
+  width: 60%;
+  background-color: #bec3c8;
+}
+
+.col-one{
+  flex-direction: column;
+  width: 70%;
+}
+
+.col-two{
+  flex-direction: column;
+}
+
+
+.color-box{
+  margin: 10px;
+  display: inline-block;
+  border: solid;
+  border-color: #2CDA9D;
+  border-width: 2px;
+  border-radius: 10px;
+  padding: 8px;
+  width: 60%;
+  background-color: #bec3c8;
+
+}
+
+.test-color{
+  width: 100%
+}
+
+#root .col-one .color-box .github-picker.color-picker{
+  width: 100%;
+}
+
 #snap-back .wrapper-take-photo{
   width: 600px;
   margin: 0 auto;
@@ -87,16 +186,44 @@
   position: relative; */
 
 }
+.welc-logout{
+  /* display: inline-block;
+  border: solid;
+  border-width: 2px; */
+  margin-top: 5px;
+  margin-left: 5px;
+}
 
 #no-new-snaps{
   padding-top: 20%;
   color:  #b30047;
 }
 
-.main-welcome{
-  display: inline-block;
+
+
+.nav-div{
+  /* position: relative;
+  border: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: purple;
+  min-height: 10vh;
+  padding: 5px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
+.main-welcome{
+position: absolute;
+top: 0;
+left:0;
+}
+
+
+#nav-icon{
+  width: 10%;
+}
 .rec-friend-request{
   border: solid;
   border-width: 2px;
@@ -118,19 +245,33 @@
   width: 600px;
 }
 
+#logout-btn{
+  position: absolute;
+    top: 1vh;
+    left: 20vw;
+}
+
 .stats{
-  float: right;
-  display: inline-block;
+
+  /* display: inline-block; */
   border-style: solid;
   border-width: 2px;
   border-radius: 10px;
   padding: 10px;
   margin: 5px;
+  margin-right: 10px;
+  /* position: absolute;
+  top: 0;
+  right:0; */
 
 }
 
 .nav{
   padding-left: 10px;
+
+}
+
+#nav-icon-div{
 
 }
 
@@ -210,11 +351,14 @@ border-radius: 10px;
   /* grid-column-gap: 20px; */
   grid-template-columns: 25vw 50vw 25vw;
   margin-top: 10px;
+
 }
 
 .grid-item {
 
   border-style: solid;
+  border-radius: 20px;
+  border-color: #E28413;
   padding: 20px;
   text-align: center;
   background-color: yellow;
@@ -244,9 +388,12 @@ border-radius: 10px;
 
 .snap-container{
     border-style: solid;
+    border-color: #820B8A;
+    border-radius: 20px;
     position: relative;
     margin-left: 10px;
     margin-right: 10px;
+    min-height: 100vh;
 }
 
 .camera-container{

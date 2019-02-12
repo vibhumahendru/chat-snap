@@ -129,6 +129,7 @@ class Snapchat extends Component {
   handleReset=()=>{
     this.props.setCurrentPhoto(null)
     this.props.updateSticker(null)
+
   }
 
   render() {
@@ -136,8 +137,7 @@ class Snapchat extends Component {
     return (
       <div >
           <nav >
-              {this.props.currentUser ? <Nav/> :null}
-              <button className="btn btn-outline-danger btn-sm" onClick={this.handleLogout} >Logout</button>
+              {this.props.currentUser ? <Nav history={this.props.history}/> :null}
           </nav>
         <div className="grid-container">
           <div className="grid-item" >
@@ -147,27 +147,36 @@ class Snapchat extends Component {
 
 
           <div className="snap-container" >
-            {this.props.currentPhoto ? <div className="image-sticker" ><div className="wrapper-take-photo"><h3 className="view-message">{this.props.message}</h3><img id="the-sticker" src={this.props.sticker}/><img id="the-snap" src={this.props.currentPhoto}/></div></div> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
+            {this.props.currentPhoto ? <div className="image-sticker" ><div className="wrapper-take-photo"><h3 style={ { color: `${ this.props.textColor }` } } className="view-message">{this.props.message}</h3><img id="the-sticker" src={this.props.sticker}/><img id="the-snap" src={this.props.currentPhoto}/></div></div> : <Webcam audio={false} className="cam" ref={this.setRef}/>}
 
             <br></br>
             <br></br>
             {this.props.currentPhoto ? <button className="btn btn-primary btn-sm" onClick={this.handleReset}>Take Another Pic</button>: <button className="btn btn-primary btn-sm" onClick={this.capture}>TAKE PIC</button>}
             <br></br>
-          {this.props.currentPhoto ? <><>Timer</><select onChange={(event)=> this.setTimer(event)}>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option></select></> :null}
-            {this.props.currentPhoto ? <Sticker/> :null}
-            {this.props.currentPhoto ? <TextFeature/> :null}
-            {this.props.currentPhoto ? <ChooseFriend friendObjAr={this.props.friendObjAr}/> :null}
+            <div className="editor">
+              {this.props.currentPhoto ? null: <h6 className="placeholder-editor">Take picture to edit</h6>}
+                <div className="col-one">
+                {this.props.currentPhoto ? <div className='timer-box' ><>Timer</><select onChange={(event)=> this.setTimer(event)}>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option></select></div> :null}
+                  {this.props.currentPhoto ? <Sticker/> :null}
+                  {this.props.currentPhoto ? <TextFeature/> :null}
+                </div>
+            <div className="col-two">
 
+
+                    {this.props.currentPhoto ? <ChooseFriend className="choose-friend" friendObjAr={this.props.friendObjAr}/> :null}
+                    </div>
+
+            </div>
           </div>
         {this.props.currentUser ?
           <div className="grid-item" ><RecievedSnapContainer/></div> :null
@@ -189,7 +198,8 @@ function mapStateToProps(state){
     friendObjAr: state.friendObjAr,
     recievedSnaps: state.recievedSnaps,
     sticker:state.sticker,
-    message: state.message
+    message: state.message,
+    textColor: state.textColor
   }
 }
 

@@ -31,7 +31,7 @@ class FriendContainer extends Component {
       <br></br>
       {this.props.friendRequests.length>0 ? <h1>New Requests</h1> :null}
         {this.props.currentUser ?
-          this.props.friendRequests.map(request=> <FriendRequest request={request}/>) :null
+          this.props.friendRequests.filter(req=> req.accepted === false).map(request=> <FriendRequest request={request}/>) :null
         }
 
       </div>
