@@ -67,6 +67,7 @@ class SignUp extends Component {
             </div>
           </div>
             <div className="avatar-container">
+              Pick one
                 <div>
                 <img onClick={(event)=>this.handleAvatarSelect(event)} className="animal-bitmoji" src="https://cdn3.iconfinder.com/data/icons/supericon-animals-1/512/Monkey_Square_Clear.png"/>
                 <img onClick={(event)=>this.handleAvatarSelect(event)} className="animal-bitmoji" src="http://icons.iconarchive.com/icons/google/noto-emoji-animals-nature/1024/22259-bear-face-icon.png"/>

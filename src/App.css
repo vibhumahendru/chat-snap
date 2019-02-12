@@ -242,6 +242,16 @@ left:0;
   border-color: purple;
 }
 
+.scroll-friends{
+  border: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: green;
+  overflow-y: scroll;
+  max-height: 50vh;
+  padding: 10px
+}
+
 .new-friend-req .btn.btn-success{
   margin-left: 10px;
 }
@@ -421,6 +431,16 @@ border-radius: 10px;
 height: 5%;
 margin: 2%;
 }
+
+.nav-bitmoji{
+  width: 2vw;
+height: 2vw;
+}
+#welcome-test{
+  float: right;
+  margin-left: 3px;
+}
+
 
 .avatar-container{
   display: flex;
