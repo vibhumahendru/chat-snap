@@ -125,6 +125,17 @@ background-color: #b3e5b5;
   flex-direction: column;
 }
 
+.form-group{
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.signup-inputs{
+
+  justify-content: flex-end;
+}
+
 
 .color-box{
   margin: 10px;
@@ -403,6 +414,27 @@ border-radius: 10px;
   padding: 20px;
   float: left;
   width: 500px;
+}
+
+.animal-bitmoji{
+  width: 5%;
+height: 5%;
+margin: 2%;
+}
+
+.avatar-container{
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 5% auto;
+
+}
+
+.selected-animal{
+  width: 30px;
+  height: 30px;
+  margin: 5%;
 }
 
 .App-logo {
