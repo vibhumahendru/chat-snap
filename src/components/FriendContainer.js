@@ -24,12 +24,12 @@ class FriendContainer extends Component {
     return (
       <div>
 
-      <h1>Your Friends</h1>
+      <h4>Your Friends</h4>
       {this.props.friends.length>0 ?
         <div className="scroll-friends">{this.props.friends.map(request=> <Friend request={request}/>)}</div> :null
       }
       <br></br>
-      {this.props.friendRequests.length>0 ? <h1>New Requests</h1> :null}
+      {this.props.friendRequests.length>0 ? <h5>New Requests</h5> :null}
         {this.props.currentUser ?
           this.props.friendRequests.filter(req=> req.accepted === false).map(request=> <FriendRequest request={request}/>) :null
         }

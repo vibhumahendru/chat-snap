@@ -133,7 +133,7 @@ class Snapchat extends Component {
   }
 
   render() {
-
+    
     return (
       <div >
           <nav >

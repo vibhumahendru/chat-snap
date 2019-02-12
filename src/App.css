@@ -451,6 +451,10 @@ height: 2vw;
 
 }
 
+.avatar-container img:hover{
+  cursor: pointer;
+}
+
 .selected-animal{
   width: 30px;
   height: 30px;

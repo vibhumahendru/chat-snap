@@ -52,6 +52,10 @@ class SignUp extends Component {
     })
   }
 
+  handleBack=()=>{
+    this.props.history.push('/main')
+  }
+
   render() {
 
     return (
@@ -84,7 +88,7 @@ class SignUp extends Component {
                 <img onClick={(event)=>this.handleAvatarSelect(event)} className="animal-bitmoji" src="https://cdn3.iconfinder.com/data/icons/supericon-animals-1/512/Hippo_Square_Clear.png"/>
                 </div>
             </div>
-
+            <button  className="btn btn-outline-danger btn-sm" onClick={this.handleBack} >Back</button>
       </div>
     );
   }

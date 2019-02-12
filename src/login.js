@@ -45,8 +45,8 @@ class Login extends Component {
       return (
         <div>
 
-        <h1>Welcome</h1>
-        <h3>Please enter username</h3>
+        <h2>Welcome</h2>
+        <h6>Please enter username</h6>
         <input onChange={this.handleChange} type="text" placeholder="sup"></input>
         <button className="btn btn-outline-primary btn-sm" onClick={this.handleClick} >Submit</button>
         <br></br>

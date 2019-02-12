@@ -86,7 +86,7 @@ class AddFriend extends Component {
 
     return (
       <div className="add-friend-box">
-      <h1>Add Friend</h1>
+      <h4>Add Friend</h4>
       <input list="friends-com" onChange={this.handleChange} type="text" placeholder="add friend"></input>
         <datalist id="friends-com">
         {this.handleFindNonFriends().map(friend => <option value={friend.name}></option> )}
