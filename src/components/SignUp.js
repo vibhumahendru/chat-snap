@@ -63,7 +63,7 @@ class SignUp extends Component {
       <h1> Create Account</h1>
           <div className="form-group">
             <div className="signup-inputs">
-              <input placeholder="Name" onChange={(event)=> this.handleChange(event)} type="text"></input><br></br>
+              <input id="sign-name-input" placeholder="Name" onChange={(event)=> this.handleChange(event)} type="text"></input><br></br>
               <input placeholder="Password" type="password"></input><br></br>
               {this.state.animalAvatar ? <img className="selected-animal" src={this.state.animalAvatar}/>: null}
               {this.state.animalAvatar ? <button onClick={this.handleSubmit} class="btn btn-primary">Submit</button>: null}

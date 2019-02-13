@@ -6,7 +6,9 @@
   width: 600px
 }
 
-
+#sign-name-input{
+  margin-bottom: 5px;
+}
 
 #the-sticker-viewing{
   position: absolute;
