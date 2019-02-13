@@ -12,10 +12,10 @@ class Nav extends Component {
     return (
       <div className="nav-div">
           <div className="welc-logout">
+            <img className="nav-bitmoji" src={this.props.currentUser.avatarUrl}/>
+              <h2 id="welcome-test" >Welcome: {this.props.currentUser.name}</h2>
             <div >
-              <h2>Welcome: {this.props.currentUser.name}</h2>
-            </div>
-            <div >
+
               <button  className="btn btn-outline-danger btn-sm" onClick={this.handleLogout} >Logout</button>
             </div>
           </div>

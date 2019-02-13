@@ -8,10 +8,10 @@ class Friend extends Component {
   handleFindFriendName =()=>{
     if (this.props.request.friender_id === this.props.currentUser.id) {
       let foundFriend = this.props.usersAr.find(user=> user.id === this.props.request.friendee_id)
-      return foundFriend.name
+      return {name: foundFriend.name, avatarUrl: foundFriend.avatarUrl}
     }else{
       let foundFriend = this.props.usersAr.find(user=> user.id === this.props.request.friender_id)
-      return foundFriend.name
+      return {name: foundFriend.name, avatarUrl: foundFriend.avatarUrl}
     }
   }
 
@@ -49,9 +49,9 @@ class Friend extends Component {
 
     return (
       <div className="alert alert-success">
-      <img className="friend-bitmoji" src="http://christinagriffis.com/wp-content/uploads/2018/02/Christina-Bitmoji-Circle-01.png"/>
-        <h4 className="friend-name">{this.handleFindFriendName()}</h4>
-        {this.handleFindFriendName() === this.handleFindHeart() ? <img className="heart-emoji" src="https://cdn.shopify.com/s/files/1/1061/1924/products/Sparkling_Pink_Heart_Emoji_large.png?v=1480481032"/>:null}
+      <img className="friend-bitmoji" src={this.handleFindFriendName().avatarUrl}/>
+        <h4 className="friend-name">{this.handleFindFriendName().name}</h4>
+        {this.handleFindFriendName().name === this.handleFindHeart() ? <img className="heart-emoji" src="https://cdn.shopify.com/s/files/1/1061/1924/products/Sparkling_Pink_Heart_Emoji_large.png?v=1480481032"/>:null}
       </div>
     );
   }

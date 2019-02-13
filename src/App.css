@@ -6,7 +6,9 @@
   width: 600px
 }
 
-
+#sign-name-input{
+  margin-bottom: 5px;
+}
 
 #the-sticker-viewing{
   position: absolute;
@@ -125,6 +127,17 @@ background-color: #b3e5b5;
   flex-direction: column;
 }
 
+.form-group{
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.signup-inputs{
+
+  justify-content: flex-end;
+}
+
 
 .color-box{
   margin: 10px;
@@ -229,6 +242,16 @@ left:0;
   border-width: 2px;
   border-radius: 10px;
   border-color: purple;
+}
+
+.scroll-friends{
+  border: solid;
+  border-width: 2px;
+  border-radius: 10px;
+  border-color: green;
+  overflow-y: scroll;
+  max-height: 50vh;
+  padding: 10px
 }
 
 .new-friend-req .btn.btn-success{
@@ -403,6 +426,41 @@ border-radius: 10px;
   padding: 20px;
   float: left;
   width: 500px;
+}
+
+.animal-bitmoji{
+  width: 5%;
+height: 5%;
+margin: 2%;
+}
+
+.nav-bitmoji{
+  width: 2vw;
+height: 2vw;
+}
+#welcome-test{
+  float: right;
+  margin-left: 3px;
+}
+
+
+.avatar-container{
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 5% auto;
+
+}
+
+.avatar-container img:hover{
+  cursor: pointer;
+}
+
+.selected-animal{
+  width: 30px;
+  height: 30px;
+  margin: 5%;
 }
 
 .App-logo {
