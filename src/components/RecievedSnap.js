@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
+import Moment from 'react-moment';
 
 
 class RecievedSnap extends Component {
@@ -38,7 +39,7 @@ class RecievedSnap extends Component {
       <div className="recieved-snap" onClick={()=>this.handleViewSnap(this.props.snap)}>
         <img className="friend-bitmoji" src="http://emojipedia-us.s3.amazonaws.com/content/2015/08/26/snapchat-recieved-snap-without-audio.png"/>
         From {this.getSenderName(this.props.snap)}<br></br>
-        At: {this.props.snap.created_at}
+        <Moment fromNow>{this.props.snap.created_at}</Moment>
       </div>
     );
   }
